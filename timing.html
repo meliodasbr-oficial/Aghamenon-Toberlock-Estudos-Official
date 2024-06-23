@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="aghamenonestudosiconv2.ico" type="image/x-icon">
+    <title>Aghamenon Estudos</title>
+    <link rel="stylesheet" href="timing.css" type="text/css">
+</head>
+
+<body>
+    <section>
+        <header class="menu-computer">
+            <a class="logo">Aghamenon Estudos</a>
+        </header>
+    </section>
+    <div class="container">
+        <div class="content">
+            <p>O site está em manutenção</p>
+            <h1><span>Lançaremos</span> em breve</h1>
+            <div class="launch-time">
+                <div>
+                    <p id="dias">00</p>
+                    <span>Dias</span>
+                </div>
+                <div>
+                    <p id="horas">00</p>
+                    <span>Horas</span>
+                </div>
+                <div>
+                    <p id="minutos">00</p>
+                    <span>Minutos</span>
+                </div>
+                <div>
+                    <p id="segundos">00</p>
+                    <span>Segundos</span>
+                </div>
+            </div>
+        </div>
+        <img src="rocket.png" class="rocket" alt="Foguete">
+    </div>
+
+    <script>
+        // Data de lançamento
+        var countDownDate = new Date("Jul 12, 2024 09:00:00").getTime();
+
+
+        var x = setInterval(function () {
+            var now = new Date().getTime();
+
+
+            var distance = countDownDate - now;
+
+
+            var dias = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var horas = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutos = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var segundos = Math.floor((distance % (1000 * 60)) / 1000);
+
+
+            document.getElementById("dias").innerHTML = dias;
+            document.getElementById("horas").innerHTML = horas;
+            document.getElementById("minutos").innerHTML = minutos;
+            document.getElementById("segundos").innerHTML = segundos;
+
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.querySelector(".launch-time").innerHTML = "Lançado!";
+                window.location.href = "https://meliodasbr-oficial.github.io/Aghamenon-Estudos-Official/";
+            }
+        }, 1000);
+    </script>
+</body>
+
+</html>

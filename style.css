@@ -14,14 +14,15 @@ body {
 
 /* Seção Principal */
 section {
-    background: url("background.png") fixed;
+    background: url("background.png") center fixed;
     width: 100%;
     min-height: 100vh;
-    padding: 20px;
+    padding: 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative; /* Importante para o posicionamento do cabeçalho */
+    padding-top: 150px;
 }
 
 /* Cabeçalho */
@@ -139,14 +140,20 @@ header .logo {
 
 @media (max-width: 900px) {
     section {
-        padding: 100px;
-        padding: 150px;
-    }
-
-    .icons {
-        bottom: 20px;
-        left: 20px;
-    }
+    background: url(background.png) center fixed;
+    width: 100%;
+    min-height: 100vh;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding-top: 120px;
+}
+.icons {
+    bottom: 20px;
+    left: 20px;
+}
 }
 
 /* Rodapé */
