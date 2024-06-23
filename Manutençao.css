@@ -1,0 +1,45 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background: url(background.png) center;
+    background-size: cover;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-repeat: no-repeat;
+}
+
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 600px;
+}
+
+#avisos-container {
+    margin-top: 20px;
+}
+
+.aviso {
+    padding: 10px;
+    background-color: #f1f1f1;
+    margin-bottom: 10px;
+    border-left: 6px solid #007BFF; /* Cor da borda do aviso */
+    border-radius: 4px;
+}
+
+.aviso h3 {
+    margin-top: 0;
+    font-size: 18px;
+}
+
+.aviso p {
+    margin-bottom: 0;
+    font-size: 14px;
+    color: #333;
+}

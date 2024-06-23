@@ -1,0 +1,133 @@
+main {
+    padding: 20px;
+    box-shadow: 2px 1px 10px 5px #00000061;
+    display: flex;
+    text-align: left;
+    flex-wrap: wrap;
+    width: 90vw;
+    overflow: hidden;
+    justify-content: space-around;
+    margin-top: 100px;
+}
+
+div.cursos {
+    width: 320px;
+    height: 400px;
+    background-color: var(--azulmedio);
+    margin: 20px;
+    border: 1px solid var(--azulescuto);
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.247);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.imagens-curso {
+    border-radius: 50px;
+    object-fit: cover;
+    height: 300px;
+    width: 300px;
+    margin-top: 25px;
+}
+
+@media (max-width: 770px) {
+    html body main {
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+    }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
+section{
+    width: 100%;
+    min-height: 100vh;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: url("background.png") fixed;
+    overflow: hidden;
+}
+header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 22px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgb(55, 55, 55);
+}
+header .logo{
+    font-size: 24px;
+    color: #fff;
+    position: relative;
+}
+
+.imagens {
+    margin-bottom: 10px;
+    margin-left: 20px ;
+    width: 40px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.397);
+}
+
+.content{
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.content .text{
+    position: relative;
+    max-width: 600px;
+    margin-right: 20px;
+}
+.content .text h2{
+    color: #fff;
+    font-size: 2em;
+    margin-bottom: 10px;
+    line-height: 2.5em;
+    font-weight: 700;
+}
+.content .text h2 span{
+    font-size: 2em;
+    color: rgb(71, 135, 232);
+}
+.content .text p{
+    color: #fff;
+}
+.content .text a{
+    display: inline-block;
+    margin-top: 35px;
+    padding: 10px 25px;
+    background: red;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border-radius: 40px;
+    transition: 0.3s ease-in-out;
+}
+.content .text a:hover{
+    transform: translateY(-10px);
+}
+.icons{
+    font-size: larger;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+    .content .text h2 span {
+        font-size: larger;
+    }
+}

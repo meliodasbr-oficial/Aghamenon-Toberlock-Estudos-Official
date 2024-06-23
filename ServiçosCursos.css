@@ -1,0 +1,9 @@
+.cursos {
+    font-size: medium;
+}
+
+@media (max-width: 900px) {
+    .cursos {
+        font-size: smaller;
+    }
+}
