@@ -21,7 +21,6 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--royal-blue-light);
   height: 4.6875rem;
   padding: 1rem;
 }

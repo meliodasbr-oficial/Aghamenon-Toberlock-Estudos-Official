@@ -151,7 +151,7 @@ margin: auto;
 padding: 20px;
 border: 1px solid #888;
 width: 80%; /* Largura da caixa de diálogo */
-max-width: 600px; /* Largura máxima */
+max-width: 800px; /* Largura máxima */
 border-radius: 8px;
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 position: relative;

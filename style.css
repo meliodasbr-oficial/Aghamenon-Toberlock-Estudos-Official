@@ -15,7 +15,6 @@ body {
 
 /* Seção Principal */
 section {
-    background: url("background.png") center fixed;
     width: 100%;
     min-height: 100vh;
     padding: 100px;
@@ -141,7 +140,6 @@ header .logo {
 
 @media (max-width: 900px) {
     section {
-    background: url(background.png) center fixed;
     width: 100%;
     min-height: 100vh;
     padding: 30px;
