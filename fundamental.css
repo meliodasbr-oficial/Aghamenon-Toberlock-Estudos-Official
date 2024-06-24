@@ -22,7 +22,7 @@ main {
 div.cursos {
     width: 320px;
     height: 400px;
-    background-color: var(--azulmedio);
+    background-color: rgb(55, 55, 55);
     margin: 20px;
     border: 1px solid var(--azulescuto);
     border-radius: 20px;
