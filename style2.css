@@ -12,6 +12,7 @@ body {
     overflow-x: hidden;
     background: url("background.png") no-repeat center;
     background-attachment: fixed;
+    background-clip: content-box;
 }
 /* Seção Principal */
 section {
