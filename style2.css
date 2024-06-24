@@ -5,34 +5,15 @@
     box-sizing: border-box;
 }
 
-/* Custom Properties for Colors */
-:root {
-    --primary-color: rgb(71, 135, 232);
-    --secondary-color: #cfd8dc;
-    --bg-color: rgb(55, 55, 55);
-    --footer-bg-color: #333;
-    --footer-hover-color: #1976d2;
-    --text-color: #fff;
-    --highlight-color: red;
-    --hover-highlight-color: #b71c1c;
-    --icon-bg-color: #222;
-}
-
-/* Font Loading */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
-
 /* Fonte Padrão */
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
+    background: url("background.png") center fixed;
 }
-
 /* Seção Principal */
 section {
-    background-image: url(background.png);
-    background-position: center fixed;
-    background-size: cover;
     width: 100%;
     min-height: 100vh;
     padding: 20px;
@@ -53,13 +34,13 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: var(--bg-color);
+    background: rgb(55, 55, 55);
     z-index: 1000; /* Garante que o cabeçalho esteja sobreposto a outros elementos */
 }
 
 header .logo {
     font-size: 24px;
-    color: var(--text-color);
+    color: #fff;
 }
 
 .menu {
@@ -73,13 +54,13 @@ header .logo {
 
 .menu li a {
     text-decoration: none;
-    color: var(--text-color);
+    color: #fff;
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
 .menu li a:hover {
-    color: var(--secondary-color);
+    color: #cfd8dc;
 }
 
 /* Conteúdo Principal */
@@ -90,7 +71,7 @@ header .logo {
 }
 
 .content .text h2 {
-    color: var(--text-color);
+    color: #fff;
     font-size: 2.5em;
     font-weight: 700;
     line-height: 1.2;
@@ -98,19 +79,19 @@ header .logo {
 }
 
 .content .text h2 span {
-    color: var(--primary-color);
+    color: rgb(71, 135, 232);
 }
 
 .content .text p {
-    color: var(--text-color);
+    color: #fff;
 }
 
 .content .text a {
     display: inline-block;
     margin-top: 35px;
     padding: 10px 25px;
-    background: var(--highlight-color);
-    color: var(--text-color);
+    background: red;
+    color: #fff;
     font-weight: 500;
     letter-spacing: 1px;
     text-decoration: none;
@@ -120,7 +101,7 @@ header .logo {
 
 .content .text a:hover {
     transform: translateY(-5px);
-    background-color: var(--hover-highlight-color);
+    background-color: #b71c1c;
 }
 
 /* Ícones */
@@ -142,13 +123,13 @@ header .logo {
     align-items: center;
     width: 50px;
     height: 50px;
-    background: var(--icon-bg-color);
+    background: #222;
     border-radius: 50%;
     transition: background 0.3s ease;
 }
 
 .icons li a:hover {
-    background: var(--footer-hover-color);
+    background: #1976d2; /* Altere para a cor desejada */
 }
 
 .icons li a img {
@@ -169,8 +150,8 @@ header .logo {
 
 /* Rodapé */
 footer {
-    background-color: var(--footer-bg-color);
-    color: var(--text-color);
+    background-color: #333;
+    color: white;
     padding: 2rem;
     text-align: center;
 }
@@ -184,7 +165,7 @@ footer .footer-content {
 
 footer .footer-content .links a,
 footer .footer-content .social a {
-    color: var(--text-color);
+    color: white;
     text-decoration: none;
     margin: 0 10px;
     transition: color 0.3s ease;
@@ -195,7 +176,7 @@ footer .footer-content .social a {
 }
 
 footer .footer-content .social a:hover {
-    color: var(--footer-hover-color);
+    color: #1976d2; /* Altere para a cor desejada */
 }
 
 footer p {
@@ -203,16 +184,16 @@ footer p {
 }
 
 @media (max-width: 900px) {
-    footer .footer-content .social {
+    footer .footer-content .social{
         display: flex;
         margin-top: 15px;
     }
     footer .footer-content .links a,
     footer .footer-content .social a {
-        color: var(--text-color);
-        display: grid;
-        text-decoration: none;
-        margin: 0 10px;
-        transition: color 0.3s ease;
-    }
+    color: white;
+    display: grid;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
 }
