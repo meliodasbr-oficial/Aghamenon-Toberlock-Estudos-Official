@@ -19,6 +19,8 @@ section {
     background: url("background.png") no-repeat center;
     background-attachment: fixed;
     background-clip: content-box;
+    background-attachment: fixed;
+    background-clip: content-box;
     width: 100%;
     min-height: 100vh;
     padding: 20px;
