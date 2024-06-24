@@ -5,12 +5,29 @@
     box-sizing: border-box;
 }
 
+/* Custom Properties for Colors */
+:root {
+    --primary-color: rgb(71, 135, 232);
+    --secondary-color: #cfd8dc;
+    --bg-color: rgb(55, 55, 55);
+    --footer-bg-color: #333;
+    --footer-hover-color: #1976d2;
+    --text-color: #fff;
+    --highlight-color: red;
+    --hover-highlight-color: #b71c1c;
+    --icon-bg-color: #222;
+}
+
+/* Font Loading */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
 /* Fonte Padrão */
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
 }
+
 /* Seção Principal */
 section {
     background: url("background.png") no-repeat center;
@@ -34,13 +51,13 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: rgb(55, 55, 55);
+    background: var(--bg-color);
     z-index: 1000; /* Garante que o cabeçalho esteja sobreposto a outros elementos */
 }
 
 header .logo {
     font-size: 24px;
-    color: #fff;
+    color: var(--text-color);
 }
 
 .menu {
@@ -54,13 +71,13 @@ header .logo {
 
 .menu li a {
     text-decoration: none;
-    color: #fff;
+    color: var(--text-color);
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
 .menu li a:hover {
-    color: #cfd8dc;
+    color: var(--secondary-color);
 }
 
 /* Conteúdo Principal */
@@ -71,7 +88,7 @@ header .logo {
 }
 
 .content .text h2 {
-    color: #fff;
+    color: var(--text-color);
     font-size: 2.5em;
     font-weight: 700;
     line-height: 1.2;
@@ -79,19 +96,19 @@ header .logo {
 }
 
 .content .text h2 span {
-    color: rgb(71, 135, 232);
+    color: var(--primary-color);
 }
 
 .content .text p {
-    color: #fff;
+    color: var(--text-color);
 }
 
 .content .text a {
     display: inline-block;
     margin-top: 35px;
     padding: 10px 25px;
-    background: red;
-    color: #fff;
+    background: var(--highlight-color);
+    color: var(--text-color);
     font-weight: 500;
     letter-spacing: 1px;
     text-decoration: none;
@@ -101,7 +118,7 @@ header .logo {
 
 .content .text a:hover {
     transform: translateY(-5px);
-    background-color: #b71c1c;
+    background-color: var(--hover-highlight-color);
 }
 
 /* Ícones */
@@ -123,13 +140,13 @@ header .logo {
     align-items: center;
     width: 50px;
     height: 50px;
-    background: #222;
+    background: var(--icon-bg-color);
     border-radius: 50%;
     transition: background 0.3s ease;
 }
 
 .icons li a:hover {
-    background: #1976d2; /* Altere para a cor desejada */
+    background: var(--footer-hover-color);
 }
 
 .icons li a img {
@@ -150,8 +167,8 @@ header .logo {
 
 /* Rodapé */
 footer {
-    background-color: #333;
-    color: white;
+    background-color: var(--footer-bg-color);
+    color: var(--text-color);
     padding: 2rem;
     text-align: center;
 }
@@ -165,7 +182,7 @@ footer .footer-content {
 
 footer .footer-content .links a,
 footer .footer-content .social a {
-    color: white;
+    color: var(--text-color);
     text-decoration: none;
     margin: 0 10px;
     transition: color 0.3s ease;
@@ -176,7 +193,7 @@ footer .footer-content .social a {
 }
 
 footer .footer-content .social a:hover {
-    color: #1976d2; /* Altere para a cor desejada */
+    color: var(--footer-hover-color);
 }
 
 footer p {
@@ -184,16 +201,16 @@ footer p {
 }
 
 @media (max-width: 900px) {
-    footer .footer-content .social{
+    footer .footer-content .social {
         display: flex;
         margin-top: 15px;
     }
     footer .footer-content .links a,
     footer .footer-content .social a {
-    color: white;
-    display: grid;
-    text-decoration: none;
-    margin: 0 10px;
-    transition: color 0.3s ease;
-}
+        color: var(--text-color);
+        display: grid;
+        text-decoration: none;
+        margin: 0 10px;
+        transition: color 0.3s ease;
+    }
 }
