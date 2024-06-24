@@ -9,7 +9,8 @@ body{
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: url("background.png") no-repeat center center fixed;
+    background: url("background.png") no-repeat center center;
+    background-size: cover;
 }
 section{
     display: flex;

@@ -10,7 +10,8 @@ body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
-    background: url("background.png") fixed;
+    background: url("background.png") center;
+    background-size: cover;
 }
 /* Seção Principal */
 section {

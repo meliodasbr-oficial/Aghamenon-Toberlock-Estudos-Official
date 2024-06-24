@@ -10,7 +10,8 @@ body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
-    background: url("background.png") center fixed;
+    background: url("background.png") center;
+    background-size: cover;
 }
 
 /* Seção Principal */
@@ -146,7 +147,6 @@ header .logo {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
     padding-top: 120px;
 }
 .icons {
