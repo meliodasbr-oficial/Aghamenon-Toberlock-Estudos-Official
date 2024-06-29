@@ -1,0 +1,206 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fonte Padrão */
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    background: url("/background.png") center;
+    background-size: cover;
+}
+
+/* Seção Principal */
+section {
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /* Importante para o posicionamento do cabeçalho */
+    padding-top: 150px;
+}
+
+/* Cabeçalho */
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 22px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgb(55, 55, 55);
+    z-index: 1000; /* Garante que o cabeçalho esteja sobreposto a outros elementos */
+}
+
+header .logo {
+    font-size: 24px;
+    color: #fff;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+}
+
+.menu li {
+    margin-left: 20px;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.menu li a:hover {
+    color: #cfd8dc;
+}
+
+/* Conteúdo Principal */
+.content {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+}
+
+.content .text h2 {
+    color: #fff;
+    font-size: 2.5em;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.content .text h2 span {
+    color: rgb(71, 135, 232);
+}
+
+.content .text p {
+    color: #fff;
+}
+
+.content .text a {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 10px 25px;
+    background: red;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border-radius: 40px;
+    transition: 0.3s ease-in-out;
+}
+
+.content .text a:hover {
+    transform: translateY(-5px);
+    background-color: #b71c1c;
+}
+
+/* Ícones */
+.icons {
+    position: absolute;
+    bottom: 90px;
+    left: 110px;
+    display: flex;
+}
+
+.icons li {
+    list-style: none;
+    margin-left: 20px;
+}
+
+.icons li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background: #222;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.icons li a:hover {
+    background: #1976d2; /* Altere para a cor desejada */
+}
+
+.icons li a img {
+    filter: invert(1);
+    transform: scale(0.5);
+}
+
+@media (max-width: 900px) {
+    section {
+    width: 100%;
+    min-height: 100vh;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 120px;
+}
+.icons {
+    bottom: 20px;
+    left: 20px;
+}
+}
+
+/* Rodapé */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+footer .footer-content {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    align-items: center;
+}
+
+footer .footer-content .links a,
+footer .footer-content .social a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+footer .footer-content .social a {
+    font-size: 2rem;
+}
+
+footer .footer-content .social a:hover {
+    color: #1976d2; /* Altere para a cor desejada */
+}
+
+footer p {
+    margin-top: 10px;
+}
+
+@media (max-width: 900px) {
+    footer .footer-content .social{
+        display: flex;
+        margin-top: 15px;
+    }
+    footer .footer-content .links a,
+    footer .footer-content .social a {
+    color: white;
+    display: grid;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+}
