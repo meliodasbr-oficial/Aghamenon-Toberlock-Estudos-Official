@@ -50,7 +50,8 @@ section{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: url("background.png") fixed;
+    background: url("background.png") center;
+    background-size: cover;
     overflow: hidden;
 }
 header{
