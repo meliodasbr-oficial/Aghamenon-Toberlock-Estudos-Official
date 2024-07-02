@@ -15,9 +15,10 @@
 body {
   font-family: 'Poppins', sans-serif;
   line-height: 1.6;
-  background: url(background.png) center center fixed;
+  background: url(background.png) center;
   background-size: cover;
   background-attachment: fixed; /* Fixa a imagem de fundo */
+  clear: both;
   margin: 0;
   padding: 0;
 }
