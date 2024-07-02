@@ -1,6 +1,5 @@
 main {
     padding: 2rem; /* Espaçamento interno */
-    background-color: var(--backgroud); /* Cor de fundo */
     min-height: calc(100vh - 4.6875rem); /* Altura mínima para ocupar a tela inteira menos o cabeçalho */
     display: flex;
     flex-direction: column;
