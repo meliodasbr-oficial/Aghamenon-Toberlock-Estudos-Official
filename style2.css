@@ -13,6 +13,7 @@ body {
     background: url("background.png") center;
     background-size: cover;
     background-repeat: no-repeat;
+    background-color: #cf205d00
 }
 /* Seção Principal */
 section {
