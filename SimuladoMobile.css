@@ -15,9 +15,6 @@
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
-    background-image: url(background.png);
-    background-position: center center;
-    background-size: cover;
     margin: 0;
     padding: 0;
 }
@@ -211,3 +208,4 @@ button {
     padding: 0px;
     cursor: pointer;
 }
+

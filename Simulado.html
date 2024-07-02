@@ -7,6 +7,7 @@
     <link rel="icon" href="aghamenonestudosiconv2.ico" type="image/x-icon">
     <link rel="stylesheet" href="SimuladoMobile.css">
     <link rel="stylesheet" href="Simulado.css">
+    <link rel="stylesheet" href="mobilemenu.css">
     <link rel="stylesheet" href="Footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,38 +16,44 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <script src="menu.js" defer></script>
     <script src="dialogo.js" defer></script>
-    <title>Simulador de Testes ENEM</title>
+    <title>Simulado</title>
 </head>
 <body>
-    <header class="header">
+    <header class="menu-computer">
         <a class="logo">Aghamenon Estudos</a>
-        <button class="btn-menu" aria-label="Abrir Menu" aria-haspopup="true" aria-controls="menu" aria-expanded="false"> Menu
-            <span class="hamburger"></span>
-        </button>
         <nav class="nav">
-            <ul class="menu">
-                <li><a href="./index">Início</a></li>
+            <button
+              class="btn-menu"
+              aria-label="Abrir Menu"
+              aria-haspopup="true"
+              aria-controls="menu"
+              aria-expanded="false"
+            >
+              Menu<span class="hamburger"></span>
+            </button>
+            <ul class="menu" id="menu" role="menu">
+                <li><a href="./index.html">Início</a></li>
                 <li><a href="./Serviços">Serviços</a></li>
                 <li><a href="./Sobre">Sobre</a></li>
                 <li><a href="./Simulado">Simulado</a></li>
                 <li><a href="./Contato">Suporte</a></li>
-                <li><a><button id="openUpdatesBtn">Últimas Atualizações</button></a></li>
+              <li><a><button id="openUpdatesBtn">Últimas Atualizações</button></a></li>
             </ul>
-        </nav>
+        </nav> 
     </header>
 
     <!-- Conteúdo do simulador -->
     <main>
         <!-- Página de boas-vindas -->
         <div id="welcome-container" class="container">
-            <h1>Bem-vindo ao Simulador de Testes ENEM</h1>
-            <p>Teste seus conhecimentos com perguntas do ENEM e prepare-se para o exame!</p>
-            <button id="start-button" class="btn">Começar o Quiz</button>
+            <h1>Bem-vindo ao Simulado</h1>
+            <p>Teste seu conhecimeto e se prepare para as Provas!</p>
+            <button id="start-button" class="btn">Começar Simulado</button>
         </div>
 
         <!-- Container de perguntas -->
         <div id="question-container" class="container hidden">
-            <div id="timer">Tempo restante: <span id="time">40</span> segundos</div>
+            <div id="timer">Tempo restante: <span id="time">120</span> segundos</div>
             <h2 id="question">Pergunta</h2>
             <img id="question-image" src="" alt="" class="hidden">
             <div id="answers" class="answers">

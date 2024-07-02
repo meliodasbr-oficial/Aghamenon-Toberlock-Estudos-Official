@@ -16,7 +16,7 @@ function handleButtonClick(event) {
   nav.classList.toggle("active");
 
   // Atualizar o status do menu no localStorage
-  updateLastMenuStatus(nav.classList.contains("active"));
+  updateLastMenuStatus(nav.classList.contains("off"));
 
   // Lidar com cliques fora do menu para fechar o menu se aberto
   handleClickOutside(menu, () => {

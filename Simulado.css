@@ -10,7 +10,6 @@ main {
   
   .container {
     background-color: var(--white); /* Cor de fundo dos containers */
-    border-radius: 2rem; /* Borda arredondada */
     padding: 3rem; /* Espaçamento interno */
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1); /* Sombra */
     margin-bottom: 2rem; /* Margem inferior */
