@@ -12,6 +12,9 @@ body {
     overflow-x: hidden;
     background: url("background.png") center;
     background-size: cover;
+    backface-visibility: hidden;
+    background-color: #000000;
+    background-clip: content-box;
 }
 
 /* Seção Principal */

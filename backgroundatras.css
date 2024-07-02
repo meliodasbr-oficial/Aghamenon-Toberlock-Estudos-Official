@@ -7,11 +7,14 @@
 
 /* Fonte Padrão */
 body {
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.6;
-    overflow-x: hidden;
-    background: url("background.png") center;
-    background-size: cover;
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+        background: url(background.png) center;
+        background-size: cover;
+        clear: both;
+        overflow-x: hidden;
+        background-repeat: no-repeat;
+        background-color: black;
 }
 /* Seção Principal */
 section {
