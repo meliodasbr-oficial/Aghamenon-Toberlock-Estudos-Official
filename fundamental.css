@@ -33,7 +33,7 @@ div.cursos {
     margin-top: 25px;
 }
 
-@media (max-width: 770px) {
+@media (max-width: 900px) {
     html body main {
         display: flex;
         justify-content: center;

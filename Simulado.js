@@ -91,6 +91,186 @@ const questions = [
             { text: "A garantia da segurança dos materiais.", correct: true },
             { text: "A resistência dos materiais à eletrônica convencional.", correct: false }
         ]
+    },
+    {
+        question: "Qual é a derivada de x²?",
+        image: null,
+        answers: [
+            { text: "2x", correct: true },
+            { text: "x", correct: false },
+            { text: "x³", correct: false },
+            { text: "2", correct: false }
+        ]
+    },
+    {
+        question: "Qual é o valor de 7³?",
+        image: null,
+        answers: [
+            { text: "21", correct: false },
+            { text: "343", correct: true },
+            { text: "49", correct: false },
+            { text: "729", correct: false }
+        ]
+    },
+    {
+        question: "O movimento migratório que resultou na ocupação do Oeste dos Estados Unidos no século XIX é conhecido como:",
+        image: null,
+        answers: [
+            { text: "Gold Rush", correct: false },
+            { text: "Marcha para o Oeste", correct: true },
+            { text: "Guerra Civil", correct: false },
+            { text: "Manifest Destiny", correct: false }
+        ]
+    },
+    {
+        question: "Qual é a função principal do ribossomo?",
+        image: null,
+        answers: [
+            { text: "Produção de energia", correct: false },
+            { text: "Síntese de proteínas", correct: true },
+            { text: "Armazenamento de lipídios", correct: false },
+            { text: "Transporte de substâncias", correct: false }
+        ]
+    },
+    {
+        question: "Quem pintou 'A Noite Estrelada'?",
+        image: null,
+        answers: [
+            { text: "Vincent van Gogh", correct: true },
+            { text: "Pablo Picasso", correct: false },
+            { text: "Claude Monet", correct: false },
+            { text: "Leonardo da Vinci", correct: false }
+        ]
+    },
+    {
+        question: "Qual é o elemento mais abundante no universo?",
+        image: null,
+        answers: [
+            { text: "Hidrogênio", correct: true },
+            { text: "Oxigênio", correct: false },
+            { text: "Carbono", correct: false },
+            { text: "Hélio", correct: false }
+        ]
+    },
+    {
+        question: "Qual é o valor de π (pi) aproximadamente?",
+        image: null,
+        answers: [
+            { text: "3,14", correct: true },
+            { text: "2,17", correct: false },
+            { text: "1,62", correct: false },
+            { text: "4,18", correct: false }
+        ]
+    },
+    {
+        question: "Qual é o maior oceano da Terra?",
+        image: null,
+        answers: [
+            { text: "Atlântico", correct: false },
+            { text: "Pacífico", correct: true },
+            { text: "Índico", correct: false },
+            { text: "Ártico", correct: false }
+        ]
+    },
+    {
+        question: "Qual é a fórmula da área de um triângulo?",
+        image: null,
+        answers: [
+            { text: "base x altura / 2", correct: true },
+            { text: "base x altura", correct: false },
+            { text: "base + altura / 2", correct: false },
+            { text: "base + altura", correct: false }
+        ]
+    },
+    {
+        question: "Qual é o principal gás responsável pelo efeito estufa?",
+        image: null,
+        answers: [
+            { text: "Dióxido de carbono", correct: true },
+            { text: "Oxigênio", correct: false },
+            { text: "Nitrogênio", correct: false },
+            { text: "Hidrogênio", correct: false }
+        ]
+    },
+    {
+        question: "Quem foi o responsável pela teoria da relatividade?",
+        image: null,
+        answers: [
+            { text: "Isaac Newton", correct: false },
+            { text: "Albert Einstein", correct: true },
+            { text: "Galileu Galilei", correct: false },
+            { text: "Niels Bohr", correct: false }
+        ]
+    },
+    {
+        question: "Qual é a fórmula química da glicose?",
+        image: null,
+        answers: [
+            { text: "C6H12O6", correct: true },
+            { text: "C12H22O11", correct: false },
+            { text: "H2O", correct: false },
+            { text: "CH4", correct: false }
+        ]
+    },
+    {
+        question: "Qual é a principal função do pâncreas no sistema digestivo?",
+        image: null,
+        answers: [
+            { text: "Produção de bile", correct: false },
+            { text: "Produção de insulina", correct: true },
+            { text: "Absorção de nutrientes", correct: false },
+            { text: "Produção de ácido clorídrico", correct: false }
+        ]
+    },
+    {
+        question: "Qual é o elemento químico com símbolo 'Fe'?",
+        image: null,
+        answers: [
+            { text: "Ferro", correct: true },
+            { text: "Flúor", correct: false },
+            { text: "Fósforo", correct: false },
+            { text: "Francium", correct: false }
+        ]
+    },
+    {
+        question: "Qual é o resultado da expressão 3x² - 2x + 1 quando x = 2?",
+        image: null,
+        answers: [
+            { text: "9", correct: false },
+            { text: "11", correct: true },
+            { text: "15", correct: false },
+            { text: "17", correct: false }
+        ]
+    },
+    {
+        question: "Em que ano aconteceu a Proclamação da República no Brasil?",
+        image: null,
+        answers: [
+            { text: "1889", correct: true },
+            { text: "1822", correct: false },
+            { text: "1964", correct: false },
+            { text: "1500", correct: false }
+        ]
+    },
+    {
+        question: "Qual é a fórmula química do gás carbônico?",
+        image: null,
+        answers: [
+            { text: "CO2", correct: true },
+            { text: "O2", correct: false },
+            { text: "H2O", correct: false },
+            { text: "CH4", correct: false }
+        ]
+    },
+    {
+        question: "Qual foi o principal objetivo da Revolução Francesa?",
+        image: null,
+        answers: [
+            { text: "Abolir a monarquia e estabelecer uma república", correct: true },
+            { text: "Expandir o território francês", correct: false },
+            { text: "Fortalecer a monarquia", correct: false },
+            { text: "Promover a industrialização", correct: false }
+        ]
     }
     // Adicione mais perguntas conforme necessário
 ];
@@ -102,7 +282,7 @@ let score = 0;
 let correctAnswers = 0;
 let totalQuestions = questions.length; // Definir o número correto de perguntas (de acordo com o exemplo)
 let timer;
-let timeRemaining = 120;
+let timeRemaining = 360;
 let startTime; // Variável para registrar o tempo de início do simulado
 let endTime; // Variável para registrar o tempo de término do simulado
 
@@ -189,7 +369,7 @@ function showQuestion() {
         answerButtonsElement.appendChild(button);
     });
     nextButton.classList.add('hidden');
-    timeRemaining = 120;
+    timeRemaining = 360;
     timerElement.innerText = timeRemaining;
 }
 
@@ -218,7 +398,7 @@ function selectAnswer(e) {
     };
 
     if (correct) {
-        score += 50; 
+        score += 25; 
         correctAnswers++;
     }
 
@@ -285,7 +465,7 @@ function startTimer() {
 
 function stopTimer() {
     clearInterval(timer);
-    timeRemaining = 120;
+    timeRemaining = 360;
 }
 
 function shuffle(array) {
