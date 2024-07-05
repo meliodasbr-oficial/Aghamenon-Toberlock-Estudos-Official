@@ -11,10 +11,12 @@ body {
         line-height: 1.6;
         background: url(background.png) center;
         background-size: cover;
+        background-attachment: fixed; /* Fixa a imagem de fundo */
         clear: both;
         overflow-x: hidden;
         background-repeat: no-repeat;
         background-color: black;
+        background-clip: content-box;
 }
 /* Seção Principal */
 section {
