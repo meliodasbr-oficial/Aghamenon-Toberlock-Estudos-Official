@@ -39,3 +39,42 @@ div.cursos {
         width: 100vw;
     }
 }
+
+/* Animação de seleção para os links dentro das divs .cursos */
+.cursos h1 a{
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.cursos h1 a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.cursos a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.cursos a:hover {
+    color: #007BFF; /* cor desejada ao passar o mouse */
+}
+
+/* Estilos para imagens dentro das divs .cursos */
+.cursos img {
+    transition: transform 0.3s ease;
+}
+
+.cursos a:hover img {
+    transform: scale(1.1); /* Zoom na imagem ao passar o mouse */
+}
