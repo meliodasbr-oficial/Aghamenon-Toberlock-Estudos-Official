@@ -1,0 +1,46 @@
+div.cursos {
+    width: 300px;
+    height: 40px;
+    background-color: rgb(55, 55, 55);
+    border: 1px solid var(--azulescuto);
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.247);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin: 16px;
+}
+ main {
+    margin-top: 30px;
+ }
+
+.cursos a {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.cursos a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.cursos a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.cursos a:hover {
+    color: #007BFF; /* cor desejada ao passar o mouse */
+}

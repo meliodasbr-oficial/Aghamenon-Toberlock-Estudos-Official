@@ -6,13 +6,13 @@ main {
     flex-wrap: wrap;
     width: 100vw;
     overflow: hidden;
-    justify-content: space-around;
+    justify-content: center;
     margin-top: 100px;
 }
 
 div.cursos {
-    width: 320px;
-    height: 400px;
+    width: 250px;
+    height: 350px;
     background-color: rgb(55, 55, 55);
     margin: 20px;
     border: 1px solid var(--azulescuto);
@@ -28,8 +28,8 @@ div.cursos {
 .imagens-curso {
     border-radius: 50px;
     object-fit: cover;
-    height: 300px;
-    width: 300px;
+    height: 270px;
+    width: 250px;
     margin-top: 25px;
 }
 
@@ -39,4 +39,43 @@ div.cursos {
         justify-content: center;
         width: 100vw;
     }
+}
+
+/* Animação de seleção para os links dentro das divs .cursos */
+.cursos h1 a{
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.cursos h1 a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.cursos a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.cursos a:hover {
+    color: #007BFF; /* cor desejada ao passar o mouse */
+}
+
+/* Estilos para imagens dentro das divs .cursos */
+.cursos img {
+    transition: transform 0.3s ease;
+}
+
+.cursos a:hover img {
+    transform: scale(1.1); /* Zoom na imagem ao passar o mouse */
 }

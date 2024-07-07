@@ -142,7 +142,7 @@ header .logo {
     transform: scale(0.5);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
     section {
     width: 100%;
     min-height: 100vh;
@@ -193,7 +193,7 @@ footer p {
     margin-top: 10px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
     footer .footer-content .social{
         display: flex;
         margin-top: 15px;

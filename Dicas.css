@@ -51,7 +51,7 @@
     display: none;
   }
   
-  @media (max-width: 900px) {
+  @media (max-width: 1000px) {
     .menu {
       display: block;
       position: absolute;
@@ -196,10 +196,11 @@ main {
 }
 
 .tip-category h4 {
+  text-align: center;
     font-size: x-large;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
     main {
         width: 100%;
     }
@@ -215,4 +216,34 @@ main li {
 
 main ul {
     margin: 20px;
+}
+
+/* Animação de seleção para os links do menu */
+.menu li a {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.menu li a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.menu li a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.menu li a:hover {
+  color: white; /* cor desejada ao passar o mouse */
 }

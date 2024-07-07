@@ -78,11 +78,11 @@ header .logo {
     display: none;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
     .menu {
         display: block;
         position: absolute;
-top: 5.9999rem;
+        top: 5.9999rem;
         left: 0;
         background: var(--royal-blue-light);
         text-align: center;
