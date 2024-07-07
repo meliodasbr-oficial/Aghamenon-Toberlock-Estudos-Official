@@ -118,3 +118,26 @@ form button:hover{
     transition: all 1s;
     text-decoration: none;
 }
+
+.CMD {
+    margin-top: 20px;
+}
+
+.CMD a {
+    display: inline-block;
+    padding: 12px 20px;
+    margin-right: 10px;
+    font-size: 16px;
+    background: transparent;
+    border: 2px solid #f5f5f5;
+    color: #f5f5f5;
+    text-decoration: none;
+    transition: all 0.5s;
+}
+
+.CMD a:hover {
+    background-color: #f5f5f5;
+    color: #101026;
+    border-color: #f5f5f5;
+    border-radius: 16px;
+}
