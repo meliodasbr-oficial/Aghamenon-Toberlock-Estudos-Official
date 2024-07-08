@@ -52,6 +52,10 @@
   }
   
   @media (max-width: 1000px) {
+    header .logo {
+      font-size: 18px;
+      color: #fff;
+  }
     .menu {
       display: block;
       position: absolute;

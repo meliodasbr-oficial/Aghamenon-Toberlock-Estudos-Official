@@ -17,7 +17,7 @@ body {
   line-height: 1.6;
   background: url(background.png) center;
   background-size: cover;
-  background-attachment: fixed; /* Fixa a imagem de fundo */
+  background-attachment: fixed;
   clear: both;
   margin: 0;
   padding: 0;
@@ -86,10 +86,14 @@ margin-left: 20px;
 }
 
 @media (max-width: 1000px) {
+  header .logo {
+    font-size: 18px;
+    color: #fff;
+}
   .menu {
       display: block;
       position: absolute;
-top: 5.9999rem;
+      top: 5.9999rem;
       left: 0;
       background: var(--royal-blue-light);
       text-align: center;

@@ -26,10 +26,10 @@ div.cursos {
 }
 
 .imagens-curso {
+    background-color: white;
     border-radius: 50px;
-    object-fit: cover;
-    height: 270px;
-    width: 250px;
+    height: 260px;
+    width: 245px;
     margin-top: 25px;
 }
 @media (max-width: 1000px) {

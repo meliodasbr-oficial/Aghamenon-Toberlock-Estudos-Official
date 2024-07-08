@@ -7,23 +7,27 @@
 
 /* Fonte Padrão */
 body {
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.6;
-    overflow-x: hidden;
-    background: url("background.png") center fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-color: #cf205d00
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+        background: url(background.png) center;
+        background-size: cover;
+        background-attachment: fixed;
+        clear: both;
+        overflow-x: hidden;
+        background-repeat: no-repeat;
+        background-color: black;
+        background-clip: content-box;
 }
 /* Seção Principal */
 section {
     width: 100%;
     min-height: 100vh;
     padding: 20px;
+    padding-top: 125px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    position: relative; /* Importante para o posicionamento do cabeçalho */
+    position: relative;
 }
 
 /* Cabeçalho */
@@ -37,11 +41,11 @@ header {
     align-items: center;
     justify-content: space-between;
     background: rgb(55, 55, 55);
-    z-index: 1000; /* Garante que o cabeçalho esteja sobreposto a outros elementos */
+    z-index: 1000;
 }
 
 header .logo {
-    font-size: 24px;
+    font-size: 20px;
     color: #fff;
 }
 
@@ -131,7 +135,7 @@ header .logo {
 }
 
 .icons li a:hover {
-    background: #1976d2; /* Altere para a cor desejada */
+    background: #1976d2;
 }
 
 .icons li a img {
@@ -140,6 +144,10 @@ header .logo {
 }
 
 @media (max-width: 900px) {
+    section {
+        padding-top: 120px;
+    }
+
     .icons {
         bottom: 20px;
         left: 20px;

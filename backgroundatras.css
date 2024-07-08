@@ -11,7 +11,7 @@ body {
         line-height: 1.6;
         background: url(background.png) center;
         background-size: cover;
-        background-attachment: fixed; /* Fixa a imagem de fundo */
+        background-attachment: fixed;
         clear: both;
         overflow-x: hidden;
         background-repeat: no-repeat;
@@ -27,7 +27,7 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative; /* Importante para o posicionamento do cabeçalho */
+    position: relative;
 }
 
 /* Cabeçalho */
@@ -41,7 +41,7 @@ header {
     align-items: center;
     justify-content: space-between;
     background: rgb(55, 55, 55);
-    z-index: 1000; /* Garante que o cabeçalho esteja sobreposto a outros elementos */
+    z-index: 1000;
 }
 
 header .logo {
@@ -135,7 +135,7 @@ header .logo {
 }
 
 .icons li a:hover {
-    background: #1976d2; /* Altere para a cor desejada */
+    background: #1976d2;
 }
 
 .icons li a img {
