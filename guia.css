@@ -17,9 +17,8 @@ a {
   text-decoration: none;
 }
 .imagens-curso {
-  height: 50vh;
-  margin: auto;
-  display: block;
+  margin: 20px auto;
+  display: flex;
   border: ridge;
   border-color: rgb(71, 135, 232);
 }
