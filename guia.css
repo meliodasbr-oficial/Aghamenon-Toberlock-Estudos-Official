@@ -16,7 +16,13 @@ a {
   color: var(--white);
   text-decoration: none;
 }
-
+.imagens-curso {
+  height: 50vh;
+  margin: auto;
+  display: block;
+  border: ridge;
+  border-color: rgb(71, 135, 232);
+}
 .header {
   display: flex;
   align-items: center;
