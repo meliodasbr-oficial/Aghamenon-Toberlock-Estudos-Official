@@ -112,7 +112,7 @@ header .logo {
 /* Ícones */
 .icons {
     position: absolute;
-    bottom: 90px;
+    bottom: 50px;
     left: 110px;
     display: flex;
 }
@@ -153,9 +153,15 @@ header .logo {
     padding-top: 120px;
 }
 .icons {
-    bottom: 20px;
+    bottom: 30px;
     left: 20px;
 }
+}
+@media (max-width: 370px){
+    .icons {
+        bottom: 3px;
+        left: 20px;
+    }
 }
 
 /* Rodapé */

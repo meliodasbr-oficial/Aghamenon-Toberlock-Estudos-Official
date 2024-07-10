@@ -41,7 +41,10 @@ header .logo {
   font-size: 24px;
   color: #fff;
 }
-
+img#question-image {
+    width: 350px;
+    height: 350px;
+}
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
@@ -82,6 +85,10 @@ header .logo {
     header .logo {
         font-size: 18px;
         color: #fff;
+    }
+    img#question-image {
+        max-width: 100%;
+        height: auto;
     }
     .menu {
         display: block;

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="SimuladoMobile.css">
     <link rel="stylesheet" href="Simulado.css">
     <link rel="stylesheet" href="mobilemenu.css">
-    <link rel="stylesheet" href="Rodape.css">
+    <link rel="stylesheet" href="RodapeSimulado.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -54,8 +54,8 @@
         <!-- Container de perguntas -->
         <div id="question-container" class="container hidden">
             <div id="timer">Tempo restante: <span id="time">360</span> segundos</div>
-            <h2 id="question">Pergunta</h2>
             <img id="question-image" src="" alt="" class="hidden">
+            <h2 id="question">Pergunta</h2>
             <div id="answers" class="answers">
                 <!-- Botões de respostas serão gerados dinamicamente aqui -->
             </div>
@@ -74,6 +74,7 @@
             <button id="retry-button" class="btn">Tente Novamente</button>
             <button id="home-button" class="btn">Ir para o Início</button>
         </div>
+        <div id="question-container" class="question-container"></div>
     </main>
 
     <footer>
