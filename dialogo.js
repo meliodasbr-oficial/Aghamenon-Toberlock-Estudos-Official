@@ -1,5 +1,4 @@
-// Seleção dos elementos do DOM
-const nav = document.querySelector(".nav");
+const nav = document.querySelector(".nav-principal");
 const btnMenu = document.querySelector(".btn-menu");
 const menu = document.querySelector(".menu");
 const updatesDialog = document.getElementById('updatesDialog');
