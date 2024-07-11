@@ -236,8 +236,8 @@ const questions = [
         question: "Qual é o resultado da expressão 3x² - 2x + 1 quando x = 2?",
         image: null,
         answers: [
-            { text: "9", correct: false },
-            { text: "11", correct: true },
+            { text: "9", correct: true },
+            { text: "11", correct: false },
             { text: "15", correct: false },
             { text: "17", correct: false }
         ]
