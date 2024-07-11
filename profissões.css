@@ -11,8 +11,8 @@ main {
 }
 
 div.cursos {
-    width: 250px;
-    height: 350px;
+    width: 255px;
+    height: 395px;
     background-color: rgb(55, 55, 55);
     margin: 20px;
     border: 1px solid var(--azulescuto);
