@@ -134,7 +134,7 @@ const questions = [
     },
     {
         question: "Quem pintou 'A Noite Estrelada'?",
-        image: "/A noite Estrelada.jpg",
+        image: "A noite Estrelada.jpg",
         answers: [
             { text: "Vincent van Gogh", correct: true },
             { text: "Pablo Picasso", correct: false },
@@ -274,7 +274,7 @@ const questions = [
     },
     {
         question: "A imagem acima faz referência a momentos de tensão na política externa Brasileira durante o século XIX(19). Um desses episódios envolveu a Inglaterra na chamada Questão Christie (1863) e foi deflagrada pela",
-        image: "/Questao-de-historia.jpg",
+        image: "Questao-de-historia.jpg",
         answers: [
             { text: "resistência das elites escravistas brasileiras em extinguir o tráfico de africanos, gerando descontentamento entre os diplomatas ingleses.", correct: false },
             { text: "decisão do governo brasileiro de não renovar o tratado de comércio com a Inglaterra, favorecendo a situação financeira do governo imperial.", correct: false },
@@ -410,7 +410,8 @@ let userAnswers = [];
 let currentQuestionIndex = 0;
 let score = 0;
 let correctAnswers = 0;
-let totalQuestions = questions.length; // Definir o número correto de perguntas (de acordo com o exemplo)
+//let totalQuestions = questions.length; // Definir o número correto de perguntas (de acordo com o exemplo)
+let totalQuestions = 20; // Definir o número correto de perguntas (de acordo com o exemplo)
 let timer;
 let timeRemaining = 360;
 let startTime; // Variável para registrar o tempo de início do simulado
