@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/sitemap.xml
