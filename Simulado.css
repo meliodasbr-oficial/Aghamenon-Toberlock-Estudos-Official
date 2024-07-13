@@ -6,7 +6,6 @@ main {
     justify-content: center;
     align-items: center;
   }
-  
   .container {
     background-color: var(--white); /* Cor de fundo dos containers */
     padding: 0.5rem; /* Espaçamento interno */
@@ -17,6 +16,7 @@ main {
     width: 100%; /* Largura total */
     position: relative;
     top: 100px;
+    font-size: 13px;
   }
   .container h1 {
     font-size: 2.5rem; /* Tamanho da fonte do título */
@@ -46,7 +46,7 @@ main {
   }
   
   #timer {
-    font-size: 1.5rem; /* Tamanho da fonte do timer */
+    font-size: 1.4rem; /* Tamanho da fonte do timer */
     margin-bottom: 1rem; /* Margem inferior do timer */
   }
   

@@ -11,7 +11,7 @@ const questions = [
     },
     {
         question: "Quem pintou a Mona Lisa?",
-        image: "/monalisa.jpg",
+        image: "monalisa.jpg",
         answers: [
             { text: "Leonardo da Vinci", correct: true },
             { text: "Vincent van Gogh", correct: false },
