@@ -49,6 +49,30 @@ a {
     border: ridge;
     border-color: rgb(71, 135, 232);
 }
+.imagens-digital {
+  margin: 20px auto;
+    background-color: white;
+    display: flex;
+    height: 260px;
+    border: ridge;
+    border-color: rgb(71, 135, 232);
+}
+.imagens-humanos {
+  margin: 20px auto;
+    background-color: white;
+    display: flex;
+    height: 260px;
+    border: ridge;
+    border-color: rgb(71, 135, 232);
+}
+.imagens-energia {
+  margin: 20px auto;
+    background-color: white;
+    display: flex;
+    height: 260px;
+    border: ridge;
+    border-color: rgb(71, 135, 232);
+}
 
 .logo {
   font-size: 1.5rem;
