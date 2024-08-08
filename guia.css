@@ -17,6 +17,7 @@ a {
   text-decoration: none;
 }
 .imagens-curso {
+  background-color: white;
   margin: 20px auto;
   display: flex;
   border: ridge;
@@ -29,6 +30,24 @@ a {
   background: var(--royal-blue-light);
   height: 4.6875rem;
   padding: 1rem;
+}
+
+.imagens-saude {
+  margin: 20px auto;
+    background-color: white;
+    display: flex;
+    height: 260px;
+    border: ridge;
+    border-color: rgb(71, 135, 232);
+}
+
+.imagens-learning {
+  margin: 20px auto;
+    background-color: white;
+    display: flex;
+    height: 260px;
+    border: ridge;
+    border-color: rgb(71, 135, 232);
 }
 
 .logo {
@@ -224,6 +243,11 @@ main li {
 
 main ul {
   margin: 20px;
+}
+
+main ul p {
+  font-size: larger;
+  font-weight: 600;
 }
 
 /* Animação de seleção para os links do menu */
