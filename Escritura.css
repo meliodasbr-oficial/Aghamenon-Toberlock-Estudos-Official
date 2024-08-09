@@ -11,3 +11,12 @@ main {
         width: 100%;
     }
 }
+video {
+    max-width: 100%; /* Garante que o vídeo não ultrapasse o container */
+    height: auto; /* Mantém a proporção do vídeo */
+    display: block; /* Remove espaços em branco ao redor do vídeo */
+}
+
+.text-intro {
+    margin-top: 25px; /* Ajuste o valor conforme necessário */
+}
