@@ -411,7 +411,7 @@ let currentQuestionIndex = 0;
 let score = 0;
 let correctAnswers = 0;
 //let totalQuestions = questions.length; // Definir o número correto de perguntas (de acordo com o exemplo)
-let totalQuestions = 20; // Definir o número correto de perguntas (de acordo com o exemplo)
+let totalQuestions = 10; // Definir o número correto de perguntas (de acordo com o exemplo)
 let timer;
 let timeRemaining = 360;
 let startTime; // Variável para registrar o tempo de início do simulado
