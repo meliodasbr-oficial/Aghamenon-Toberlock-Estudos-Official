@@ -1,0 +1,231 @@
+main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 20px;
+}
+
+.profile-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+#profile-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+#profile-name {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.profile-bio {
+    font-size: 1rem;
+    color: #555;
+}
+
+.edit-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 8px;
+    color: #555;
+    font-size: 1rem;
+}
+
+.edit-button:hover {
+    color: #000;
+}
+
+/* Adicione isso ao seu arquivo profile.css ou entre tags <style> no HTML */
+
+#confirm-name-change {
+    background-color: #007bff; /* Cor de fundo do botão */
+    color: #fff; /* Cor do texto */
+    border: none; /* Remove bordas */
+    padding: 8px 16px; /* Espaçamento interno */
+    margin-left: 8px; /* Espaçamento à esquerda */
+    border-radius: 4px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de ponteiro */
+    font-size: 16px; /* Tamanho da fonte */
+    transition: background-color 0.3s; /* Transição suave para a cor de fundo */
+}
+
+#confirm-name-change:hover {
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+}
+
+#confirm-name-change:active {
+    background-color: #004080; /* Cor de fundo ao clicar */
+}
+
+/* Estilos específicos para telas de até 600px */
+@media (max-width: 600px) {
+    main {
+        padding-top: 10px; /* Reduzir o padding superior para telas menores */
+    }
+
+    .profile-container {
+        padding: 15px; /* Reduzir o padding interno para telas menores */
+    }
+
+    .profile-header {
+        margin-bottom: 10px; /* Ajustar a margem inferior */
+    }
+
+    #profile-photo {
+        width: 80px; /* Reduzir o tamanho da foto do perfil */
+        height: 80px;
+    }
+
+    #profile-name {
+        font-size: 1.5rem; /* Reduzir o tamanho da fonte do nome */
+    }
+
+    .profile-bio {
+        font-size: 0.9rem; /* Reduzir o tamanho da fonte da biografia */
+    }
+
+    .edit-container {
+        flex-direction: column; /* Empilhar os elementos em coluna */
+        align-items: center; /* Centralizar os itens */
+    }
+
+    .edit-button {
+        margin-left: 0; /* Remover a margem à esquerda */
+        margin-top: 10px; /* Adicionar margem superior */
+    }
+
+    #confirm-name-change {
+        font-size: 14px; /* Ajustar o tamanho da fonte do botão */
+        padding: 6px 12px; /* Reduzir o padding do botão */
+        margin-left: 0; /* Remover a margem à esquerda */
+        margin-top: 10px; /* Adicionar margem superior */
+    }
+
+    #edit-name, #edit-bio {
+        width: 100%; /* Ajustar o tamanho dos campos de entrada */
+        box-sizing: border-box; /* Garantir que o padding não afete a largura total */
+    }
+
+    textarea#edit-bio {
+        height: 100px; /* Ajustar a altura do campo de biografia */
+    }
+}
+
+#change-photo-button {
+    background-color: #007bff; /* Cor de fundo do botão */
+    color: #fff; /* Cor do texto */
+    border: none; /* Remove bordas */
+    padding: 8px 16px; /* Espaçamento interno */
+    border-radius: 4px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de ponteiro */
+    font-size: 16px; /* Tamanho da fonte */
+    transition: background-color 0.3s; /* Transição suave para a cor de fundo */
+    margin-top: 10px; /* Espaçamento superior para separar do conteúdo acima */
+}
+
+#change-photo-button:hover {
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+}
+
+#change-photo-button:active {
+    background-color: #004080; /* Cor de fundo ao clicar */
+}
+
+#bio-edit-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#edit-bio {
+    width: 200px;
+    height: 60px;
+    margin-right: 10px;
+}
+
+#confirm-bio-change {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#confirm-bio-change:hover {
+    background-color: #45a049;
+}
+
+<script>
+        const container = document.getElementById('container');
+
+        document.getElementById('signUp').addEventListener('click', () => {
+            container.classList.add('active');
+        });
+
+        document.getElementById('signIn').addEventListener('click', () => {
+            container.classList.remove('active');
+        });
+
+        const notificationElement = document.getElementById("notification");
+
+        function showNotification(message) {
+            notificationElement.textContent = message;
+            notificationElement.classList.add("show");
+            setTimeout(() => {
+                notificationElement.classList.remove("show");
+            }, 3000);
+        }
+
+        // Mostrar notificação após 1 segundo
+        setTimeout(() => {
+            showNotification("Página carregada com sucesso!");
+        }, 1000);
+
+        // Script para mostrar/ocultar senha
+        document.getElementById('show-password-register').addEventListener('change', function () {
+            const passwordField = document.getElementById('password-register');
+            if (this.checked) {
+                passwordField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+            }
+        });
+
+        document.getElementById('show-password-login').addEventListener('change', function () {
+            const passwordField = document.getElementById('password-login');
+            if (this.checked) {
+                passwordField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+            }
+        });
+    </script>

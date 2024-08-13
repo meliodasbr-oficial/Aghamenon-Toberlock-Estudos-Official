@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página de perfil do usuário no Aghamenon Toberlock Estudos">
+    <meta name="author" content="Richard Aghamenon - Estudante do Ensino Médio">
+    <meta name="keywords" content="Aghamenon Toberlock Estudos, perfil, usuário, foto, biografia">
+    <link rel="icon" href="aghamenonestudosiconv2.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="mobilemenu.css" />
+    <script src="console-protection.js" defer></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.5/firebase-storage.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js"></script>
+    <script type="module" src="profile.js"></script>
+    <script src="menu.js" defer></script>
+
+    <title>Perfil - Aghamenon Toberlock Estudos</title>
+    <style>
+        /* Adicione qualquer estilo adicional aqui */
+        .char-count {
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .profile-bio {
+            background-color: #f9f9f9; /* Cor de fundo opcional */
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+            box-sizing: border-box;
+            overflow: hidden; /* Evita que o conteúdo ultrapasse a área */
+            max-height: 200px; /* Ajuste conforme necessário */
+            overflow-y: auto; /* Adiciona rolagem vertical se o texto ultrapassar a altura máxima */
+        }
+
+        #profile-bio-text {
+            white-space: pre-wrap; /* Mantém quebras de linha e espaços */
+            word-wrap: break-word; /* Quebra palavras longas */
+            overflow: hidden; /* Garante que o texto não ultrapasse o contêiner */
+            text-overflow: ellipsis; /* Adiciona reticências se o texto for muito longo */
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <header class="menu-computer">
+            <a class="logo">Aghamenon Toberlock Estudos</a>
+            <nav class="nav">
+                <button
+                  class="btn-menu"
+                  aria-label="Abrir Menu"
+                  aria-haspopup="true"
+                  aria-controls="menu"
+                  aria-expanded="false"
+                >
+                  Menu<span class="hamburger"></span>
+                </button>
+                <ul class="menu" id="menu" role="menu">
+                    <li><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/">Início</a></li>
+                    <li><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/Servi%C3%A7os">Serviços</a></li>
+                    <li><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/Simulado">Simulado</a></li>
+                    <li><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/Sobre">Sobre</a></li>
+                    <li><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/Contato">Suporte</a></li>
+                    <li id="logout-menu-item" style="display: none;"><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/auth" id="logout-button">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <div class="profile-container">
+                <div class="profile-header">
+                    <img id="profile-photo" src="default-profile-pic.jpg" alt="Foto do Usuário">
+                    <input type="file" id="upload-photo" style="display: none;">
+                    <button id="change-photo-button">Trocar Foto</button>
+                    <div class="edit-container">
+                        <h1 id="profile-name">Nome do Usuário</h1>
+                        <button id="edit-name-button" class="edit-button"><i class="bi bi-pencil"></i></button>
+                        <div id="name-edit-container" style="display: none;">
+                            <input type="text" id="edit-name">
+                            <button id="confirm-name-change">Confirmar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-details">
+                    <div class="edit-container">
+                        <h2>GameTag: <span id="profile-gametag">Gametag do Usuário#0000</span></h2>
+                    </div>
+                    <div class="profile-bio">
+                        <div class="edit-container">
+                            <p id="profile-bio-text">Biografia do Usuário</p>
+                            <button id="edit-bio-button" class="edit-button"><i class="bi bi-pencil"></i></button>
+                            <div id="bio-edit-container" style="display: none;">
+                                <textarea id="edit-bio" maxlength="50"></textarea>
+                                <p id="bio-char-count" class="char-count">50 caracteres restantes</p>
+                                <button id="confirm-bio-change">Confirmar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bioTextArea = document.getElementById('edit-bio');
+            const charCount = document.getElementById('bio-char-count');
+
+            // Atualiza o contador de caracteres restantes
+            bioTextArea.addEventListener('input', function() {
+                const maxLength = 50;
+                const currentLength = bioTextArea.value.length;
+                const remaining = maxLength - currentLength;
+                charCount.textContent = `${remaining} caracteres restantes`;
+            });
+
+            // Funcionalidade para editar o nome
+            document.getElementById('edit-name-button').addEventListener('click', function() {
+                document.getElementById('name-edit-container').style.display = 'flex';
+            });
+
+            document.getElementById('confirm-name-change').addEventListener('click', function() {
+                const newName = document.getElementById('edit-name').value;
+                document.getElementById('profile-name').textContent = newName;
+                document.getElementById('name-edit-container').style.display = 'none';
+            });
+
+            // Funcionalidade para editar a biografia
+            document.getElementById('edit-bio-button').addEventListener('click', function() {
+                document.getElementById('bio-edit-container').style.display = 'flex';
+                bioTextArea.focus(); // Foca no textarea ao abrir o editor
+            });
+
+            document.getElementById('confirm-bio-change').addEventListener('click', function() {
+                const newBio = bioTextArea.value;
+                document.getElementById('profile-bio-text').textContent = newBio;
+                document.getElementById('bio-edit-container').style.display = 'none';
+            });
+
+            // Funcionalidade para trocar a foto de perfil
+            document.getElementById('change-photo-button').addEventListener('click', function() {
+                document.getElementById('upload-photo').click();
+            });
+
+            document.getElementById('upload-photo').addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('profile-photo').src = e.target.result;
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
