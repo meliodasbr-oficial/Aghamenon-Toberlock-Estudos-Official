@@ -162,8 +162,9 @@ main {
 
 #bio-edit-container {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     margin-top: 10px;
+    flex-direction: column;
 }
 
 #edit-bio {
@@ -183,49 +184,3 @@ main {
 #confirm-bio-change:hover {
     background-color: #45a049;
 }
-
-<script>
-        const container = document.getElementById('container');
-
-        document.getElementById('signUp').addEventListener('click', () => {
-            container.classList.add('active');
-        });
-
-        document.getElementById('signIn').addEventListener('click', () => {
-            container.classList.remove('active');
-        });
-
-        const notificationElement = document.getElementById("notification");
-
-        function showNotification(message) {
-            notificationElement.textContent = message;
-            notificationElement.classList.add("show");
-            setTimeout(() => {
-                notificationElement.classList.remove("show");
-            }, 3000);
-        }
-
-        // Mostrar notificação após 1 segundo
-        setTimeout(() => {
-            showNotification("Página carregada com sucesso!");
-        }, 1000);
-
-        // Script para mostrar/ocultar senha
-        document.getElementById('show-password-register').addEventListener('change', function () {
-            const passwordField = document.getElementById('password-register');
-            if (this.checked) {
-                passwordField.type = 'text';
-            } else {
-                passwordField.type = 'password';
-            }
-        });
-
-        document.getElementById('show-password-login').addEventListener('change', function () {
-            const passwordField = document.getElementById('password-login');
-            if (this.checked) {
-                passwordField.type = 'text';
-            } else {
-                passwordField.type = 'password';
-            }
-        });
-    </script>

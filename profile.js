@@ -51,7 +51,7 @@ onAuthStateChanged(auth, (user) => {
                 document.getElementById('profile-photo').src = userData.photoURL || 'default-profile-pic.jpg';
                 document.getElementById('profile-name').textContent = userData.username || user.displayName || 'Nome do Usuário';
                 document.getElementById('profile-gametag').textContent = gameTag;
-                document.getElementById('profile-bio-text').textContent = userData.bio || 'Aqui você pode adicionar informações sobre o usuário, se houver';
+                document.getElementById('profile-bio-text').textContent = userData.bio || 'Fale um pouco do que você gosta';
 
                 if (!userData.gameTag) {
                     updateUserProfile(user, { gameTag }).then(() => {
@@ -66,7 +66,7 @@ onAuthStateChanged(auth, (user) => {
                     username: user.displayName,
                     gameTag: defaultGameTag,
                     photoURL: user.photoURL || 'default-profile-pic.jpg',
-                    bio: 'Aqui você pode adicionar informações sobre o usuário, se houver'
+                    bio: 'Fale um pouco do que você gosta'
                 };
                 updateUserProfile(user, defaultData);
                 document.getElementById('profile-gametag').textContent = defaultGameTag;

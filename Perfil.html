@@ -93,15 +93,15 @@
                 </div>
                 <div class="profile-details">
                     <div class="edit-container">
-                        <h2>GameTag: <span id="profile-gametag">Gametag do Usuário#0000</span></h2>
+                        <h2>GameTag: <span id="profile-gametag"></span></h2>
                     </div>
                     <div class="profile-bio">
                         <div class="edit-container">
-                            <p id="profile-bio-text">Biografia do Usuário</p>
+                            <p id="profile-bio-text"></p>
                             <button id="edit-bio-button" class="edit-button"><i class="bi bi-pencil"></i></button>
                             <div id="bio-edit-container" style="display: none;">
-                                <textarea id="edit-bio" maxlength="50"></textarea>
-                                <p id="bio-char-count" class="char-count">50 caracteres restantes</p>
+                                <textarea id="edit-bio" maxlength="100"></textarea>
+                                <p id="bio-char-count" class="char-count">100 caracteres restantes</p>
                                 <button id="confirm-bio-change">Confirmar</button>
                             </div>
                         </div>
@@ -118,7 +118,7 @@
 
             // Atualiza o contador de caracteres restantes
             bioTextArea.addEventListener('input', function() {
-                const maxLength = 50;
+                const maxLength = 100;
                 const currentLength = bioTextArea.value.length;
                 const remaining = maxLength - currentLength;
                 charCount.textContent = `${remaining} caracteres restantes`;
