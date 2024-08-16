@@ -16,7 +16,7 @@
         });
 
         // Redirecionar ou realizar outras ações
-        window.location.href = 'access-denied.html'; // Página de aviso
+        window.location.href = 'https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/access-denied'; // Página de aviso
     }
 
     function detectDevTools() {
