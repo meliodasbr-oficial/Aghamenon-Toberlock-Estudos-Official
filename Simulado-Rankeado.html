@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="aghamenonestudosiconv2.ico" type="image/x-icon">
+    <link rel="stylesheet" href="Simulado.css">
+    <link rel="stylesheet" href="mobilemenu.css">
+    <link rel="stylesheet" href="RodapeSimulado.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <script type="module" src="firebaseConfig.js" defer></script>
+    <script type="module" src="SimuladoRankeado.js" defer></script>
+    <title>Simulado Rankeado</title>
+</head>
+<body>
+    <header class="menu-computer">
+        <a class="logo" href="#">Aghamenon Toberlock Estudos</a>
+        <nav class="nav">
+            <button class="btn-menu" aria-label="Abrir Menu" aria-haspopup="true" aria-controls="menu" aria-expanded="false">
+                Menu<span class="hamburger"></span>
+            </button>
+            <ul class="menu" id="menu" role="menu">
+                <li><a href="./">Início</a></li>
+                <li><a href="./Serviços">Serviços</a></li>
+                <li><a href="./Simulado">Simulado</a></li>
+                <li><a href="./Sobre">Sobre</a></li>
+                <li><a href="./Contato">Suporte</a></li>
+                <li><a><button id="openUpdatesBtn" aria-label="Últimas Atualizações">Últimas Atualizações</button></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="welcome-container" class="container">
+            <h1>Bem-vindo ao Simulado Rankeado</h1>
+            <p>Teste seu conhecimento e se prepare para as Provas!</p>
+            <button id="start-button" class="btn">Começar Simulado</button>
+        </section>
+        <section id="login-alert" class="container hidden">
+            <h2>Você precisa estar logado para continuar</h2>
+            <button id="login-redirect-button" class="btn">Fazer Login</button>
+        </section>
+        <section id="question-container" class="container hidden">
+            <div id="timer">Tempo restante: <span id="time">120</span> segundos</div>
+            <p id="question-progress">Perguntas Respondidas: <span id="questions-answered">0</span> de <span id="total-questions-span">0</span></p>
+            <img id="question-image" src="" alt="" class="hidden">
+            <h2 id="question">Pergunta</h2>
+            <div id="answers" class="answers">
+                <!-- Botões de respostas serão gerados dinamicamente aqui -->
+            </div>
+            <button id="next-button" class="btn hidden">Próxima Pergunta</button>
+        </section>
+        <section id="result-container" class="container hidden">
+            <h2>Resultado do Simulado</h2>
+            <p>Sua Pontuação: <span id="score">0</span></p>
+            <p><span id="correct-answers">0</span> respostas corretas de <span id="total-questions">0</span></p>
+            <div id="review-answers" class="review-answers">
+                <!-- Respostas revisadas aparecem aqui -->
+            </div>
+            <p id="time-taken"></p>
+            <button id="fazer-button" class="btn">Fazer Novamente</button>
+            <button id="home-button" class="btn">Ir para o Início</button>
+        </section>
+        <!-- Nova seção para mostrar a penalidade quando o tempo acabar -->
+        <section id="timeout-result" class="container hidden">
+            <h2>Tempo Esgotado ou Aba Inativa</h2>
+            <p>Você perdeu 10 pontos por perca de Tempo ou aba Inativa.</p>
+            <button id="retry-button" class="btn">Tentar Novamente</button>
+        </section>
+        <!-- Nova seção para mostrar a penalidade quando a aba for trocada -->
+    <section id="inactive-tab-alert" class="container hidden">
+        <h2>Aba Inativa</h2>
+        <p>Você perdeu 10 pontos devido à troca de aba. Por favor, caso você pretende trapaciar ou fazer alguma outra coisa, sai do simulado antes de entrar em uma outra aba ou guia.</p>
+        <button id="back-to-simulado-button" class="btn">Voltar ao Simulado</button>
+    </section>
+
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="section links">
+                <a href="./">Início</a>
+                <a href="./Serviços">Serviços</a>
+                <a href="./Sobre">Sobre</a>
+                <a href="./Contato">Suporte</a>
+                <a href="#privacidade">Política de Privacidade</a>
+                <a href="#termos">Termos de Uso</a>
+            </div>
+            <div class="section contact">
+                <p>E-mail: <a href="mailto:aghamenonestudos@gmail.com">aghamenonestudos@gmail.com</a></p>
+                <p>Grupo Telegram: <a href="https://t.me/+U4GrpzJNIkNjMmI5">Aghamenon Estudos</a></p>
+            </div>
+            <div class="section social">
+                <a href="https://www.instagram.com/aghamenonestudosoficial/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://x.com/aghamenonestudo" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://discord.gg/VAasD2GqMk" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+            </div>
+        </div>
+        <p>© 2024 Aghamenon Toberlock Estudos Oficial. Todos os direitos reservados.</p>
+    </footer>
+    <div class="dialog-overlay" id="updatesDialog">
+        <div class="dialog-content">
+            <span class="close" onclick="fecharDialog()" aria-label="Fechar">×</span>
+            <h2>Últimas Atualizações do Servidor</h2>
+            <p>11/07/2024 - .0</p>
+            <p>➣ Simulado foi adicionado ao site.<a href="./Simulado"> -> Clique Aqui</a></p>
+            <p>➣ Serviços foi adicionado ao site.<a href="./Serviços"> -> Clique Aqui</a></p>
+            <p>➣ Dicas de Estudos foi adicionado ao site.<a href="./Dicas"> -> Clique Aqui</a></p>
+            <p>➣ Guia de Profissões adicionado ao site.<a href="./Profissões"> -> Clique Aqui</a></p>
+            <p>➣ Provas anteriores e recentes Enem adicionado<a href="./Enem"> -> Clique Aqui</a></p>
+            <p>➣ Apostila Ensino Médio adicionado.<a href="./Médio"> -> Clique Aqui</a></p>
+            <p>➣ Apostila Ensino Fundamental adicionado.<a href="./Fundamental"> Clique Aqui</a></p>
+            <p>➣ Suporte foi adicionado.<a href="./Contato"> -> Clique Aqui</a></p>
+        </div>
+    </div>
+</body>
+</html>

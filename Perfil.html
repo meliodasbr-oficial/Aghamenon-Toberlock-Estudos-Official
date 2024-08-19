@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="profile.css">
     <link rel="stylesheet" href="mobilemenu.css" />
-    <script src="console-protection.js" defer></script>
     <script type="module" src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js"></script>
     <script type="module" src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js"></script>
     <script type="module" src="https://www.gstatic.com/firebasejs/10.12.5/firebase-storage.js"></script>
@@ -69,7 +68,6 @@
                     <li><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/">Início</a></li>
                     <li><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/Servi%C3%A7os">Serviços</a></li>
                     <li><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/Simulado">Simulado</a></li>
-                    <li><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/Sobre">Sobre</a></li>
                     <li><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/Contato">Suporte</a></li>
                     <li id="logout-menu-item" style="display: none;"><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/auth" id="logout-button">Logout</a></li>
                 </ul>
@@ -83,7 +81,7 @@
                     <input type="file" id="upload-photo" style="display: none;">
                     <button id="change-photo-button">Trocar Foto</button>
                     <div class="edit-container">
-                        <h1 id="profile-name">Nome do Usuário</h1>
+                        <h1 id="profile-name">Carregando...</h1>
                         <button id="edit-name-button" class="edit-button"><i class="bi bi-pencil"></i></button>
                         <div id="name-edit-container" style="display: none;">
                             <input type="text" id="edit-name">
@@ -93,19 +91,25 @@
                 </div>
                 <div class="profile-details">
                     <div class="edit-container">
-                        <h2>GameTag: <span id="profile-gametag"></span></h2>
+                        <h2>GameTag: <span id="profile-gametag">Carregando...</span></h2>
                     </div>
                     <div class="profile-bio">
                         <div class="edit-container">
-                            <p id="profile-bio-text"></p>
+                            <p id="profile-bio-text">Carregando...</p>
                             <button id="edit-bio-button" class="edit-button"><i class="bi bi-pencil"></i></button>
                             <div id="bio-edit-container" style="display: none;">
-                                <textarea id="edit-bio" maxlength="100"></textarea>
-                                <p id="bio-char-count" class="char-count">100 caracteres restantes</p>
+                                <textarea id="edit-bio" maxlength="50"></textarea>
+                                <p id="bio-char-count" class="char-count">50 caracteres restantes</p>
                                 <button id="confirm-bio-change">Confirmar</button>
                             </div>
                         </div>
                     </div>
+                     <!-- Adicionando a seção de scores -->
+    <div class="profile-scores">
+        <h3>Score Global: <span id="score-global">Carregando...</span></h3>
+        <h3>Score ENEM: <span id="score-enem">Carregando...</span></h3>
+        <h3>Score OBMEP: <span id="score-obmep">Carregando...</span></h3>
+    </div>
                 </div>
             </div>
         </main>
@@ -118,7 +122,7 @@
 
             // Atualiza o contador de caracteres restantes
             bioTextArea.addEventListener('input', function() {
-                const maxLength = 100;
+                const maxLength = 50;
                 const currentLength = bioTextArea.value.length;
                 const remaining = maxLength - currentLength;
                 charCount.textContent = `${remaining} caracteres restantes`;
@@ -145,22 +149,6 @@
                 const newBio = bioTextArea.value;
                 document.getElementById('profile-bio-text').textContent = newBio;
                 document.getElementById('bio-edit-container').style.display = 'none';
-            });
-
-            // Funcionalidade para trocar a foto de perfil
-            document.getElementById('change-photo-button').addEventListener('click', function() {
-                document.getElementById('upload-photo').click();
-            });
-
-            document.getElementById('upload-photo').addEventListener('change', function(event) {
-                const file = event.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        document.getElementById('profile-photo').src = e.target.result;
-                    }
-                    reader.readAsDataURL(file);
-                }
             });
         });
     </script>

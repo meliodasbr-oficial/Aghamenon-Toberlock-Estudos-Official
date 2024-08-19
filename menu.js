@@ -2,7 +2,6 @@
 const nav = document.querySelector(".nav");
 const btnMenu = document.querySelector(".btn-menu");
 const menu = document.querySelector(".menu");
-const updatesDialog = document.getElementById('updatesDialog');
 const openUpdatesBtn = document.getElementById('openUpdatesBtn');
 
 // Função para lidar com o clique no botão do menu
@@ -77,33 +76,3 @@ document.addEventListener("DOMContentLoaded", () => {
 // Adicionar event listener para o clique no botão do menu
 btnMenu.addEventListener("click", handleButtonClick);
 btnMenu.addEventListener("touchstart", handleButtonClick);
-
-// Lidar com a caixa de diálogo de últimas atualizações
-openUpdatesBtn.addEventListener('click', abrirDialog);
-
-// Função para abrir a caixa de diálogo
-function abrirDialog() {
-  updatesDialog.style.display = 'block';
-}
-
-// Função para fechar a caixa de diálogo
-function fecharDialog() {
-  updatesDialog.style.display = 'none';
-}
-
-// Event listener para fechar a caixa de diálogo ao clicar no botão de fechar
-document.querySelector('.close').addEventListener('click', fecharDialog);
-
-// Event listener para fechar a caixa de diálogo ao clicar fora dela
-window.addEventListener('click', (event) => {
-  if (event.target === updatesDialog) {
-    fecharDialog();
-  }
-});
-
-// Event listener para lidar com a tecla 'Esc' para fechar a caixa de diálogo
-window.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && updatesDialog.style.display === 'block') {
-    fecharDialog();
-  }
-});
