@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="fundamental.css" />
   <link rel="stylesheet" href="mobilemenu2.css" />
   <script src="menu.js" defer></script>
+  <script src="console-protection.js" defer></script>
 
   <title>Aghamenon Toberlock Estudos</title>
 </head>
@@ -27,19 +28,25 @@
     <header class="menu-computer">
       <a class="logo">Aghamenon Toberlock Estudos</a>
       <nav class="nav">
-        <button class="btn-menu" aria-label="Abrir Menu" aria-haspopup="true" aria-controls="menu"
-          aria-expanded="false">
-          Menu<span class="hamburger"></span>
-        </button>
-        <ul class="menu" id="menu" role="menu">
-          <li><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/">Início</a></li>
-                    <li><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/Servi%C3%A7os">Serviços</a></li>
-                    <li><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/Simulado">Simulado</a></li>
-                    <li><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/Sobre">Sobre</a></li>
-                    <li><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/Contato">Suporte</a></li>
-        </ul>
-      </nav>
-    </header>
+          <button
+            class="btn-menu"
+            aria-label="Abrir Menu"
+            aria-haspopup="true"
+            aria-controls="menu"
+            aria-expanded="false"
+          >
+            Menu<span class="hamburger"></span>
+          </button>
+          <ul class="menu" id="menu" role="menu">
+              <li><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/">Início</a></li>
+              <li><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/Servi%C3%A7os">Serviços</a></li>
+              <li><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/Simulado">Simulado</a></li>
+              <li><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/Contato">Suporte</a></li>
+              <li id="auth-menu-item"><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/auth">Login / Registro</a></li>
+              <li id="profile-menu-item" style="display: none;"><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/Perfil">Perfil</a></li>
+          </ul>
+      </nav> 
+  </header>
 
     <main>
       <div class="cursos">
