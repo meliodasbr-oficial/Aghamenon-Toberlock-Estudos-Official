@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (profilePhoto) profilePhoto.src = userData.photoURL || 'default-profile-pic.jpg';
                     if (profileName) profileName.textContent = userData.username || user.displayName || 'Nome do Usuário';
                     if (profileGametag) profileGametag.textContent = gameTag;
-                    if (profileBioText) profileBioText.textContent = userData.bio || 'Aqui você pode adicionar informações sobre o usuário, se houver';
+                    if (profileBioText) profileBioText.textContent = userData.bio || 'Escreva em sua Bio, conte o que você gosta!';
 
                     if (profileScoreGlobal) profileScoreGlobal.textContent = ` ${userData.scoreglobal || '--'} Pontos`;
                     if (profileScoreEnem) profileScoreEnem.textContent = ` ${userData.scoreenem || '--'} Pontos`;
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         username: user.displayName,
                         gameTag: defaultGameTag,
                         photoURL: 'default-profile-pic.jpg',
-                        bio: 'Aqui você pode adicionar informações sobre o usuário, se houver',
+                        bio: 'Escreva em sua Bio, conte o que você gosta!',
                         scoreglobal: '--',
                         scoreenem: '--',
                         scoreobmep: '--'
