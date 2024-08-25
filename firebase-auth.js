@@ -1,4 +1,4 @@
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-analytics.js";
 import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 import { getFirestore, setDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
@@ -30,6 +30,8 @@ const forbiddenUsernames = [
 function normalizeUsername(username) {
     return username.toLowerCase();
 }
+
+const defaultProfilePhotoURL = "https://firebasestorage.googleapis.com/v0/b/meliodaslogin-bae06.appspot.com/o/profile-photos%2Fpadrao.jpg?alt=media&token=2b813e1e-87e9-47ae-aac0-87eba1138177";
 
 // Verifica se o nome de usuário está na lista de proibidos
 function isUsernameForbidden(username) {
@@ -68,9 +70,9 @@ function getErrorMessage(errorCode) {
     }
 }
 
-// Função para redirecionar após login ou registro
-function redirectToHome() {
-    window.location.href = 'index.html'; // Redireciona para index.html
+// Função para redirecionar de volta à última página visitada
+function redirectToLastPage() {
+    window.history.back(); // Redireciona para a página anterior
 }
 
 // Login com email e senha
@@ -83,7 +85,7 @@ document.getElementById('login-button').addEventListener('click', () => {
             const user = userCredential.user;
             console.log('Usuário logado:', user);
             showNotification('Login bem-sucedido!');
-            redirectToHome(); // Redireciona para index.html após o login
+            redirectToLastPage(); // Redireciona para a página anterior após o login
         })
         .catch((error) => {
             const errorMessage = getErrorMessage(error.code);
@@ -107,11 +109,12 @@ document.getElementById('google-login').addEventListener('click', (e) => {
                     uid: user.uid,
                     username: user.displayName, // Use username em vez de displayName
                     email: user.email,
-                    gameTag: await generateUniqueGameTag(user.displayName)
+                    gameTag: await generateUniqueGameTag(user.displayName),
+                    photoURL: defaultProfilePhotoURL
                 });
             }
             showNotification('Login com Google bem-sucedido!');
-            redirectToHome(); // Redireciona para index.html após o login
+            redirectToLastPage(); // Redireciona para a página anterior após o login
         })
         .catch((error) => {
             const errorMessage = getErrorMessage(error.code);
@@ -139,10 +142,11 @@ document.getElementById('register-button').addEventListener('click', async () =>
                 uid: user.uid,
                 username: username, // Use username em vez de displayName
                 email: user.email,
-                gameTag: await generateUniqueGameTag(username)
+                gameTag: await generateUniqueGameTag(username),
+                photoURL: defaultProfilePhotoURL
             });
             showNotification('Registro bem-sucedido!');
-            redirectToHome(); // Redireciona para index.html após o registro
+            redirectToLastPage(); // Redireciona para a página anterior após o registro
         })
         .catch((error) => {
             const errorMessage = getErrorMessage(error.code);
@@ -166,11 +170,12 @@ document.getElementById('google-register').addEventListener('click', async (e) =
                     uid: user.uid,
                     username: user.displayName, // Use username em vez de displayName
                     email: user.email,
-                    gameTag: await generateUniqueGameTag(user.displayName)
+                    gameTag: await generateUniqueGameTag(user.displayName),
+                    photoURL: user.photoURL || defaultProfilePhotoURL
                 });
             }
             showNotification('Registro com Google bem-sucedido!');
-            redirectToHome(); // Redireciona para index.html após o registro
+            redirectToLastPage(); // Redireciona para a página anterior após o registro
         })
         .catch((error) => {
             const errorMessage = getErrorMessage(error.code);

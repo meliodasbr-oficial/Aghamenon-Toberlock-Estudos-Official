@@ -84,3 +84,7 @@ main {
     display: none; /* Elemento escondido */
   }
   
+  #question {
+    /* Garantir que o texto seja exibido corretamente */
+    white-space: normal; /* Remove espaços extras e permite quebras de linha */
+}

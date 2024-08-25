@@ -40,19 +40,19 @@ let visibilityCheckActive = false; // Controla se a verificação de abas está 
 const userAnswers = [];
 const originalAnswerIndices = [];
 
-// Lista de questões (exemplo)
+// Lista de questões
 const questions = [
     {
-        question: "Qual é a capital do Brasil?",
-        answers: ["Brasília", "São Paulo", "Rio de Janeiro", "Belo Horizonte"],
-        correctAnswer: 0
-    },
-    {
-        question: "Qual é a fórmula da água?",
-        answers: ["H2O", "CO2", "NaCl", "O2"],
-        correctAnswer: 0
-    },
-    // Adicione mais questões conforme necessário
+        question: `No man is an island,\n\nEntire of itself;\n\nEvery man is a piece of the continent,\n\nA part of the main.\n[...]\nAny man’s death diminishes me,\n\nBecause I am involved in mankind.`,
+        answers: [
+            "Risco de choques culturais.",
+            "Impacto do ensino de história.",
+            "Importância da luta ambiental.",
+            "Existência de experiências plurais.",
+            "Necessidade de capacitação profissional."
+        ],
+        correctAnswer: 3
+    }
 ];
 
 // Função para embaralhar um array
@@ -146,7 +146,7 @@ function showQuestion() {
 
     originalAnswerIndices[currentQuestionIndex] = currentQuestion.correctAnswer;
 
-    const answerLabels = ['A', 'B', 'C', 'D'];
+    const answerLabels = ['A', 'B', 'C', 'D', 'E'];
 
     answerMap.forEach((answerObj, idx) => {
         const button = document.createElement('button');
