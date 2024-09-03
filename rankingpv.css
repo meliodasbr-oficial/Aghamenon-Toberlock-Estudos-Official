@@ -9,12 +9,10 @@
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Evita scroll horizontal */
     background: url("background.png") center fixed;
     background-size: cover;
-    backface-visibility: hidden;
     background-color: #000000;
-    background-clip: content-box;
 }
 
 /* Seção Principal */
@@ -51,6 +49,7 @@ header .logo {
 .menu {
     list-style: none;
     display: flex;
+    flex-wrap: wrap; /* Permite que os itens de menu quebrem linha */
 }
 
 .menu li {
@@ -73,6 +72,8 @@ header .logo {
     display: flex;
     flex-direction: column;
     max-width: 600px;
+    width: 100%; /* Ajusta a largura para responsividade */
+    padding: 0 15px; /* Adiciona padding lateral para evitar overflow */
 }
 
 .content .text h2 {
@@ -142,74 +143,57 @@ header .logo {
     transform: scale(0.5);
 }
 
-@media (max-width: 1000px) {
+/* Ajustes para dispositivos móveis */
+@media (max-width: 1024px) {
+    .content .text h2 {
+        font-size: 2em; /* Reduz tamanho da fonte para telas menores */
+    }
+}
+
+@media (max-width: 768px) {
     section {
-    width: 100%;
-    min-height: 100vh;
-    padding: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 120px;
-}
-.icons {
-    bottom: 30px;
-    left: 20px;
-}
-}
-@media (max-width: 370px){
+        padding: 30px 0px; /* Ajusta padding para evitar overflow */
+        padding-top: 120px;
+    }
+
     .icons {
-        bottom: 3px;
+        bottom: 30px;
         left: 20px;
     }
-}
 
-/* Rodapé */
-footer {
-    background-color: #333;
-    color: white;
-    padding: 2rem;
-    text-align: center;
-}
-
-footer .footer-content {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1rem;
-    align-items: center;
-}
-
-footer .footer-content .links a,
-footer .footer-content .social a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-    transition: color 0.3s ease;
-}
-
-footer .footer-content .social a {
-    font-size: 2rem;
-}
-
-footer .footer-content .social a:hover {
-    color: #1976d2; /* Altere para a cor desejada */
-}
-
-footer p {
-    margin-top: 10px;
-}
-
-@media (max-width: 1000px) {
-    footer .footer-content .social{
-        display: flex;
-        margin-top: 15px;
+    .menu {
+        flex-direction: column; /* Menu em coluna em telas menores */
+        align-items: flex-start; /* Alinhar menu à esquerda */
     }
-    footer .footer-content .links a,
-    footer .footer-content .social a {
-    color: white;
-    display: grid;
-    text-decoration: none;
-    margin: 0 10px;
-    transition: color 0.3s ease;
+
+    .menu li {
+        margin-left: 0;
+        margin-top: 10px; /* Espaço entre itens de menu em coluna */
+    }
 }
+
+@media (max-width: 480px) {
+    .content .text h2 {
+        font-size: 1.5em; /* Reduz ainda mais para telas muito pequenas */
+    }
+
+    .content .text a {
+        padding: 8px 20px; /* Ajusta padding do botão para telas menores */
+    }
+
+    .icons {
+        bottom: 20px;
+        left: 10px;
+    }
+}
+
+@media (max-width: 370px) {
+    .icons {
+        bottom: 10px;
+        left: 10px;
+    }
+
+    .content .text h2 {
+        font-size: 1.2em; /* Fonte menor para telas extra pequenas */
+    }
 }

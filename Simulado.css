@@ -30,61 +30,63 @@ main {
   }
   
   .container button {
-    background-color: var(--royal-blue-light); /* Cor de fundo do botão */
-    color: var(--white); /* Cor do texto do botão */
-    border: none; /* Sem borda */
-    padding: 1rem 2rem; /* Espaçamento interno do botão */
-    font-size: 1rem; /* Tamanho da fonte do botão */
-    border-radius: 0.5rem; /* Borda arredondada */
-    cursor: pointer; /* Cursor ao passar por cima */
-    transition: background-color 0.3s ease; /* Transição suave */
+    background-color: var(--royal-blue-light);
+    color: var(--white);
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
     margin: 12px;
   }
   
   .container button:hover {
-    background-color: var(--royal-blue-dark); /* Cor de fundo do botão ao passar por cima */
+    background-color: var(--royal-blue-dark);
   }
   
   #timer {
-    font-size: 1.4rem; /* Tamanho da fonte do timer */
-    margin-bottom: 1rem; /* Margem inferior do timer */
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
   }
   
-  /* Estilos para o contêiner das respostas */
 #answers {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
-  margin-top: 1rem; /* Margem superior das respostas */
+  margin-top: 1rem;
 }
 
 /* Estilos para os botões de resposta */
 #answers button {
-  background-color: var(--royal-blue-light); /* Cor de fundo dos botões de resposta */
-  color: var(--white); /* Cor do texto dos botões de resposta */
-  border: none; /* Sem borda */
-  padding: 1rem; /* Espaçamento interno dos botões de resposta */
-  font-size: 1rem; /* Tamanho da fonte dos botões de resposta */
-  border-radius: 0.5rem; /* Borda arredondada */
-  cursor: pointer; /* Cursor ao passar por cima */
-  transition: background-color 0.3s ease; /* Transição suave */
+  background-color: var(--royal-blue-light);
+  color: var(--white);
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-/* Estilo de hover para os botões de resposta */
 #answers button:hover {
-  background-color: black; /* Cor de fundo dos botões de resposta ao passar por cima */
+  background-color: black;
 }
 
 #answers button.selected {
-  background-color: green; /* Cor de fundo da resposta selecionada */
-  color: #ffffff; /* Cor do texto da resposta selecionada */
+  background-color: green;
+  color: #ffffff;
 }
 
 .hidden {
-    display: none; /* Elemento escondido */
+    display: none;
   }
   
   #question {
-    /* Garantir que o texto seja exibido corretamente */
-    white-space: normal; /* Remove espaços extras e permite quebras de linha */
+    text-align: justify;
+    text-align-last: center;
+    white-space: pre-wrap;
+}
+#review-answers{
+  text-align: justify;
 }

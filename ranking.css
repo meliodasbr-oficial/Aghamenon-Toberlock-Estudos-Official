@@ -1,7 +1,7 @@
 /* Estilo principal */
 main {
     background-color: white;
-    padding: 20px;
+    max-width: 100%;
 }
 
 .ranking-container {
@@ -73,7 +73,7 @@ main {
 @media (max-width: 768px) {
     .ranking-table th,
     .ranking-table td {
-        padding: 8px;
+        padding: revert-layer;
     }
 
     .ranking-table {
@@ -83,12 +83,13 @@ main {
 
 @media (max-width: 480px) {
     .ranking-table {
-        font-size: 12px;
+        font-size: 11px;
+        max-width: 100%;
     }
 
     .ranking-table th,
     .ranking-table td {
-        padding: 6px;
+        padding: revert-layer;
     }
 
     .user-photo {
@@ -96,9 +97,6 @@ main {
         height: 40px;
     }
 
-    .ranking-container {
-        padding: 10px;
-    }
 }
 
 .countdown-container {

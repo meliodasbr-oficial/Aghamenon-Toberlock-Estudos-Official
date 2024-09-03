@@ -2,7 +2,6 @@ import { auth } from './firebaseConfig.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
 import { getFirestore, doc, getDoc, setDoc, updateDoc } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js';
 
-// Referências aos elementos da página
 const welcomeContainer = document.getElementById('welcome-container');
 const loginAlert = document.getElementById('login-alert');
 const startButton = document.getElementById('start-button');
@@ -25,10 +24,8 @@ const retryButton = document.getElementById('retry-button');
 const inactiveTabAlert = document.getElementById('inactive-tab-alert');
 const backToSimuladoButton = document.getElementById('back-to-simulado-button');
 
-// Firestore initialization
 const db = getFirestore();
 
-// Variáveis para o controle do simulado
 let currentQuestionIndex = 0;
 let score = 0;
 let correctAnswers = 0;
@@ -43,19 +40,23 @@ const originalAnswerIndices = [];
 // Lista de questões (exemplo)
 const questions = [
     {
-        question: "Qual é a capital do Brasil?",
-        answers: ["Brasília", "São Paulo", "Rio de Janeiro", "Belo Horizonte"],
+        question: "(ENEM - 2023)\n A sessão do Comitê Olímpico Internacional (COI) aprovou uma mudança histórica e inédita no lema olímpico, criado em 1894 pelo Barão Pierre de Coubertin para expressar os valores e a excelência do esporte. Mais de 120 anos depois, o lema tem sua primeira alteração para ressaltar a solidariedade e incluir a palavra “juntos”: mais rápido, mais alto, mais forte — juntos. A mudança foi aprovada por unanimidade pelos membros do COI e celebrada pelo presidente da entidade. \n\n De acordo com o texto, a alteração do lema olímpico teve como objetivo a",
+        answers: ["unificação do lema anterior ao atual.", "aproximação entre o lema olímpico e o COI.", "junção do lema olímpico com os princípios esportivos.", "associação entre o lema olímpico e a cooperatividade.", "vinculação entre o lema olímpico e os eventos atléticos."],
         correctAnswer: 0
     },
     {
-        question: "Qual é a fórmula da água?",
-        answers: ["H2O", "CO2", "NaCl", "O2"],
+        question: "(ENEM - 2023)\n Mais iluminada que outras \n Tenho dois seios, estas duas coxas, duas mãos que me são muito úteis, olhos escuros, estas duas sobrancelhas que preencho com maquiagem comprada por dezenove e noventa e orelhas que não aceitam bijuterias. Este corpo é um corpo faminto, dentado, cruel, capaz e violento. Movo os braços e multidões correm desesperadas. Caminho no escuro com o rosto para baixo, pois cada parte isolada de mim tem sua própria vida e não quero domá-las. Animal da caatinga. Forte demais. Engolidora de espadas e espinhos.\n\n Dizem e eu ouvi, mas depois também li, que o estado do Ceará aboliu a escravidão quatro anos antes do restante do país. Todos aqueles corpos que eram trazidos com seus dedos contados, seus calcanhares prontos e seus umbigos em fogo, todos eles foram interrompidos no porto. Um homem — dizem e eu ouvi e depois também li — liderou o levante. E todos esses corpos foram buscar outros incômodos. Foram ser incomodados.\n\n Nesse texto, os recursos expressivos usados pela narradora.",
+        answers: ["revelam as marcas da violência de raça e de gênero na construção da identidade.", "questionam o pioneirismo do estado do Ceará no enfrentamento à escravidão.", "reproduzem padrões estéticos em busca da valorização da autoestima feminina.", "sugerem uma atmosfera onírica alinhada ao desejo de resgate da espiritualidade.", "mimetizam, na paisagem, os corpos transformados pela violência da escravidão."],
+        correctAnswer: 0
+    },
+    {
+        question: "(ENEM - 2023)\n De quem é esta língua?\n\nUma pequena editora brasileira, a Urutau, acaba de lançar em Lisboa uma “antologia antirracista de poetas estrangeiros em Portugal”, com o título Volta para a tua terra.\n O livro denuncia as diversas formas de racismo a que os imigrantes estão sujeitos. Alguns dos poetas brasileiros antologiados queixam-se do desdém com que um grande número de portugueses acolhe o português brasileiro. É uma queixa frequente.\n “Aqui em Portugal eles dizem / — eles dizem — / que nosso português é errado, que nós não falamos português”, escreve a poetisa paulista Maria Giulia Pinheiro, para concluir: “Se a sua linguagem, a lusitana, / ainda conserva a palavra da opressão / ela não é a mais bonita do mundo./ Ela é uma das mais violentas”.\n\n O texto de Agualusa tematiza o preconceito em relação ao português brasileiro. Com base no trecho citado pelo autor, infere-se que esse preconceito se deve",
+        answers: ["à dificuldade de consolidação da literatura brasileira em outros países.", "aos diferentes graus de instrução formal entre os falantes de língua portuguesa.", "à existência de uma língua ideal que alguns falantes lusitanos creem ser a falada em Portugal.", "ao intercâmbio cultural que ocorre entre os povos dos diferentes países de língua portuguesa.", "à distância territorial entre os falantes do português que vivem em Portugal e no Brasil."],
         correctAnswer: 0
     },
     // Adicione mais questões conforme necessário
 ];
 
-// Função para embaralhar um array
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -63,23 +64,20 @@ function shuffleArray(array) {
     }
 }
 
-// Função para exibir o aviso de login
 function showLoginAlert() {
     welcomeContainer.classList.add('hidden');
     loginAlert.classList.remove('hidden');
     startButton.classList.add('hidden');
 }
 
-// Função para exibir o botão de início do simulado
 function showStartButton() {
     welcomeContainer.classList.remove('hidden');
     loginAlert.classList.add('hidden');
     startButton.classList.remove('hidden');
 }
 
-// Função para iniciar o simulado
 function startSimulado() {
-    simulationId = Date.now().toString(); // Gerar um ID único com base no timestamp atual
+    simulationId = Date.now().toString();
     welcomeContainer.classList.add('hidden');
     questionContainer.classList.remove('hidden');
     resultContainer.classList.add('hidden');
@@ -91,17 +89,24 @@ function startSimulado() {
     userAnswers.length = 0;
     originalAnswerIndices.length = 0;
     questionsAnsweredElement.textContent = "0";
+    
+    // Atualiza o total de perguntas no elemento total-questions
     totalQuestionsElement.textContent = questions.length.toString();
+    
+    // Atualiza o total de perguntas no elemento total-questions-span
+    const totalQuestionsSpan = document.getElementById('total-questions-span');
+    if (totalQuestionsSpan) {
+        totalQuestionsSpan.textContent = questions.length.toString();
+    }
 
     shuffleArray(questions);
     showQuestion();
     restartTimer();
 
-    // Ativa a verificação de visibilidade da aba
     visibilityCheckActive = true;
 }
 
-// Função para reiniciar o temporizador de 2 minutos
+
 function restartTimer() {
     if (timer) {
         clearInterval(timer);
@@ -109,10 +114,9 @@ function restartTimer() {
     startTimer();
 }
 
-// Função para iniciar o temporizador de 2 minutos
 function startTimer() {
     penaltyApplied = false;
-    const timeLimit = 2 * 60 * 1000; // 2 minutos em milissegundos
+    const timeLimit = 2 * 60 * 1000;
     const endTime = Date.now() + timeLimit;
 
     timer = setInterval(() => {
@@ -146,7 +150,7 @@ function showQuestion() {
 
     originalAnswerIndices[currentQuestionIndex] = currentQuestion.correctAnswer;
 
-    const answerLabels = ['A', 'B', 'C', 'D'];
+    const answerLabels = ['A', 'B', 'C', 'D', 'E'];
 
     answerMap.forEach((answerObj, idx) => {
         const button = document.createElement('button');
@@ -160,7 +164,6 @@ function showQuestion() {
     restartTimer();
 }
 
-// Função para selecionar uma resposta
 function selectAnswer(button, originalIndex) {
     const selectedButton = answersContainer.querySelector('.selected');
     if (selectedButton) {
@@ -183,19 +186,16 @@ function selectAnswer(button, originalIndex) {
     nextButton.classList.remove('hidden');
 }
 
-// Função para desabilitar os botões de resposta
 function disableAnswerButtons() {
     const buttons = answersContainer.querySelectorAll('.answer-button');
     buttons.forEach(button => button.disabled = true);
 }
 
-// Função para habilitar os botões de resposta
 function enableAnswerButtons() {
     const buttons = answersContainer.querySelectorAll('.answer-button');
     buttons.forEach(button => button.disabled = false);
 }
 
-// Função para passar para a próxima pergunta
 nextButton.addEventListener('click', () => {
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
@@ -207,14 +207,12 @@ nextButton.addEventListener('click', () => {
     }
 });
 
-// Função para limpar a seleção e outros resíduos
 function resetQuestion() {
     answersContainer.innerHTML = '';
     enableAnswerButtons();
     nextButton.classList.add('hidden');
 }
 
-// Função para aplicar penalidade e atualizar o scoreenem no Firestore
 function applyPenalty(message) {
     if (!penaltyApplied) {
         penaltyApplied = true;
@@ -258,17 +256,15 @@ function applyPenalty(message) {
     }
 }
 
-// Função para exibir a tela de resultados de tempo esgotado
 function showTimeoutResult() {
     questionContainer.classList.add('hidden');
     resultContainer.classList.add('hidden');
     timeoutResult.classList.remove('hidden');
-    inactiveTabAlert.classList.add('hidden'); // Garante que o alerta de aba inativa está oculto
+    inactiveTabAlert.classList.add('hidden');
     timeElement.textContent = '0';
     reviewAnswersContainer.innerHTML = '';
 }
 
-// Função para exibir os resultados e atualizar a pontuação no Firestore
 function showResults() {
     questionContainer.classList.add('hidden');
     resultContainer.classList.remove('hidden');
