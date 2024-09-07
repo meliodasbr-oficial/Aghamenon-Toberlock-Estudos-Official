@@ -3,7 +3,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding-top: 20px;
+    margin-top: 50px;
 }
 
 .profile-container {
@@ -89,7 +89,7 @@ main {
 /* Estilos específicos para telas de até 600px */
 @media (max-width: 600px) {
     main {
-        padding-top: 10px; /* Reduzir o padding superior para telas menores */
+        margin-top: 120px; /* Reduzir o padding superior para telas menores */
     }
 
     .profile-container {
@@ -183,4 +183,28 @@ main {
 
 #confirm-bio-change:hover {
     background-color: #45a049;
+}
+
+@media (max-width: 376px) {
+    main {
+        margin-top: 14px; /* Reduzir o padding superior para telas menores */
+    }
+}
+
+@media (max-width: 368px) {
+    main {
+        margin-top: 50px; /* Reduzir o padding superior para telas menores */
+    }
+}
+
+@media (max-width: 770px) {
+    main {
+        margin-top: 150px; /* Reduzir o padding superior para telas menores */
+    }
+}
+
+@media (max-width: 1000px) {
+    main {
+        margin-top: 160px; /* Reduzir o padding superior para telas menores */
+    }
 }

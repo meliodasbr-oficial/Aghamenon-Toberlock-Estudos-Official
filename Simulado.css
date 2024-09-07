@@ -17,6 +17,7 @@ main {
     position: relative;
     top: 100px;
     font-size: 13px;
+    border-radius: 10px;
   }
   .container h1 {
     font-size: 2.5rem; /* Tamanho da fonte do título */

@@ -31,6 +31,7 @@ body {
     margin-bottom: 10px;
     border-left: 6px solid #007BFF; /* Cor da borda do aviso */
     border-radius: 4px;
+    word-break: auto-phrase;
 }
 
 .aviso h3 {
@@ -38,8 +39,9 @@ body {
     font-size: 18px;
 }
 
-.aviso p {
+p {
     margin-bottom: 0;
     font-size: 14px;
     color: #333;
+    white-space: break-spaces;
 }

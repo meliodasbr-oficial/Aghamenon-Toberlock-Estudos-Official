@@ -1,12 +1,18 @@
-// script.js
-
 document.addEventListener('DOMContentLoaded', () => {
+    // Substitui o conteúdo da tag <body> com o conteúdo de manutenção
+    document.body.innerHTML = `
+        <div class="container">
+            <h1>Avisos da Manutenção</h1>
+            <div id="avisos-container"></div>
+        </div>
+    `;
+
     const avisosContainer = document.getElementById('avisos-container');
 
-    // Simula a obtenção dos avisos do servidor (substitua por sua lógica real)
     const avisosDoServidor = [
-        { titulo: 'Aghamenon Estudos', mensagem: ' É um site criado por um estudante do ensino médio, com o objetivo de ajudar outros estudantes e adultos que gostam de estudos.' },
-        { titulo: 'Fora do Ar', mensagem: 'Abertura dia 12/07/2024 ás 09:00h (horário de brasília).' }
+        { titulo: 'Aghamenon Toberlock Estudos', mensagem: '' },
+        { titulo: 'Em Manutenção', mensagem: 'Site estará ativo dia 09/09/2024 às 08:00h (horário de Brasília).' },
+        { titulo: 'Detalhes da Manutenção', mensagem: 'Melhoração de Interface e Otimização do Site.\nNovas Funcionalidades\nNovos Simulados\nSistema de Login\nSistema de Ranking' }
     ];
 
     // Função para exibir os avisos na página
@@ -22,6 +28,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Chama a função para exibir os avisos ao carregar a página
     exibirAvisos();
 });

@@ -31,17 +31,14 @@ a {
   text-decoration: none;
 }
 
+/* Cabeçalho */
 header {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   padding: 22px 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: rgb(55, 55, 55);
-  z-index: 1000;
 }
 
 header .logo {
@@ -189,4 +186,143 @@ margin-left: 20px;
 
 .menu li a:hover {
   color: white; /* cor desejada ao passar o mouse */
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  background-color: var(--white);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 100%;
+  width: 100%;
+  font-size: 13px;
+  border-radius: 10px;
+  margin: 102px 0px 102px;
+}
+.container h1 {
+  font-size: 2.5rem; /* Tamanho da fonte do título */
+  margin-bottom: 1rem; /* Margem inferior do título */
+}
+
+.container p {
+  font-size: 1.25rem; /* Tamanho da fonte do texto */
+  line-height: 1.5; /* Altura da linha */
+  margin-bottom: 1.5rem; /* Margem inferior do texto */
+}
+
+.container button {
+  background-color: var(--royal-blue-light);
+  color: var(--white);
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 12px;
+}
+
+.container button:hover {
+  background-color: var(--royal-blue-dark);
+}
+
+#timer {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+#answers {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 1rem;
+margin-top: 1rem;
+}
+
+/* Estilos para os botões de resposta */
+#answers button {
+background-color: var(--royal-blue-light);
+color: var(--white);
+border: none;
+padding: 1rem;
+font-size: 1rem;
+border-radius: 0.5rem;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+#answers button:hover {
+background-color: black;
+}
+
+#answers button.selected {
+background-color: green;
+color: #ffffff;
+}
+
+.hidden {
+  display: none;
+}
+
+#question {
+  text-align: justify;
+  text-align-last: center;
+  white-space: pre-wrap;
+}
+#review-answers{
+text-align: justify;
+}
+
+/* Rodapé */
+footer {
+  background-color: rgba(51, 51, 51, 0.8);
+  padding: 2rem;
+  text-align: center;
+  clear: both;
+}
+
+footer .footer-content {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+footer .footer-content .links a,
+footer .footer-content .social a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+footer .footer-content .social a {
+  font-size: 2rem;
+}
+
+footer .footer-content .social a:hover {
+  color: #1976d2;
+}
+
+footer p {
+  margin-top: 15px;
+  color: white;
+}
+@media (max-width: 900px) {
+  footer .footer-content .social {
+      display: flex;
+      margin-top: 15px;
+  }
+
+  footer .footer-content .links a,
+  footer .footer-content .social a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+  }
 }

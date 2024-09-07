@@ -50,7 +50,7 @@ a {
   display: none;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   header .logo {
     font-size: 18px;
     color: #fff;
@@ -111,6 +111,7 @@ a {
     height: calc(46vh - 4.6875rem);
     visibility: visible;
     overflow-y: auto;
+    border-radius: 70px 0px 70px 70px;
   }
   .nav.active .hamburger {
     border-top-color: transparent;

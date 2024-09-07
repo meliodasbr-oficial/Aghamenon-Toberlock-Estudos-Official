@@ -17,20 +17,14 @@ body {
 }
 /* Seção Principal */
 section {
-    width: 100%;
-    min-height: 100vh;
-    padding: 20px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative; /* Importante para o posicionamento do cabeçalho */
 }
 
 /* Cabeçalho */
 header {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     padding: 22px 10px;
     display: flex;
