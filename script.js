@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const avisosDoServidor = [
         { titulo: 'Aghamenon Toberlock Estudos', mensagem: '' },
-        { titulo: 'Em Manutenção', mensagem: 'Site estará ativo dia 09/09/2024 às 08:00h (horário de Brasília).' },
+        { titulo: 'Em Manutenção', mensagem: 'Site estará ativo dia 12/09/2024 às 07:30h (horário de Brasília).' },
         { titulo: 'Detalhes da Manutenção', mensagem: 'Melhoria de Interface e Otimização do Site.\nNovas Funcionalidades\nNovos Simulados\nSistema de Login\nSistema de Ranking' }
     ];
 

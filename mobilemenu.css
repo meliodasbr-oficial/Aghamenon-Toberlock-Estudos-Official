@@ -12,7 +12,7 @@
   box-sizing: border-box;
 }
 
-body {
+html{
   font-family: 'Poppins', sans-serif;
   line-height: 1.6;
   background: url(background.png) center;
@@ -23,7 +23,6 @@ body {
   padding: 0;
   overflow-x: hidden;
   background-repeat: no-repeat;
-  background-color: black;
 }
 
 a {
