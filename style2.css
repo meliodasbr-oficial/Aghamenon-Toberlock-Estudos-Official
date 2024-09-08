@@ -138,4 +138,10 @@ header .logo {
         bottom: 20px;
         left: 20px;
     }
+    body {
+        background-size: cover;
+        background-position: center;
+        height: 100%;
+        background-repeat: no-repeat;
+    }
 }
