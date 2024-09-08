@@ -1,28 +1,21 @@
 /* styles.css */
-
-body {
-    font-family: Arial, sans-serif;
-    background: url(background.png) center;
-    background-size: cover;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-repeat: no-repeat;
-}
-
-
-.container {
+.manutencao {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 600px;
+    width: 700px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 150px;
 }
 
-#avisos-container {
+#avisos-manutencao {
     margin-top: 20px;
+    width: 100%;
 }
 
 .aviso {
@@ -31,7 +24,8 @@ body {
     margin-bottom: 10px;
     border-left: 6px solid #007BFF; /* Cor da borda do aviso */
     border-radius: 4px;
-    word-break: auto-phrase;
+    word-break: break-word; /* Ajusta a quebra de palavras para evitar estouro do layout */
+    text-align: left; /* Alinha o texto à esquerda */
 }
 
 .aviso h3 {
@@ -39,9 +33,9 @@ body {
     font-size: 18px;
 }
 
-p {
+.aviso p {
     margin-bottom: 0;
     font-size: 14px;
     color: #333;
-    white-space: break-spaces;
+    white-space: pre-wrap; /* Mantém quebras de linha e espaços */
 }
