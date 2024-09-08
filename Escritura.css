@@ -12,11 +12,51 @@ main {
     }
 }
 video {
-    max-width: 100%; /* Garante que o vídeo não ultrapasse o container */
-    height: auto; /* Mantém a proporção do vídeo */
-    display: block; /* Remove espaços em branco ao redor do vídeo */
+    margin-top: 20px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 50px;
+    animation: rgbBorder 20s infinite;
 }
 
 .text-intro {
     margin-top: 25px; /* Ajuste o valor conforme necessário */
+}
+
+/* Animação das bordas */
+@keyframes rgbBorder {
+    0% {
+        box-shadow: 0 0 12px 8px rgba(255, 0, 0, 0.75); /* Vermelho */
+    }
+    10% {
+        box-shadow: 0 0 12px 8px rgba(255, 165, 0, 0.75); /* Laranja */
+    }
+    20% {
+        box-shadow: 0 0 12px 8px rgba(255, 255, 0, 0.75); /* Amarelo */
+    }
+    30% {
+        box-shadow: 0 0 12px 8px rgba(0, 255, 0, 0.75); /* Verde */
+    }
+    40% {
+        box-shadow: 0 0 12px 8px rgba(0, 255, 255, 0.75); /* Ciano */
+    }
+    50% {
+        box-shadow: 0 0 12px 8px rgba(0, 0, 255, 0.75); /* Azul */
+    }
+    60% {
+        box-shadow: 0 0 12px 8px rgba(255, 0, 255, 0.75); /* Magenta */
+    }
+    70% {
+        box-shadow: 0 0 12px 8px rgba(128, 0, 128, 0.75); /* Roxo */
+    }
+    80% {
+        box-shadow: 0 0 12px 8px rgba(255, 105, 180, 0.75); /* Rosa */
+    }
+    90% {
+        box-shadow: 0 0 12px 8px rgba(128, 128, 128, 0.75); /* Cinza */
+    }
+    100% {
+        box-shadow: 0 0 12px 8px rgba(255, 0, 0, 0.75); /* Vermelho */
+    }
 }
