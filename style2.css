@@ -9,11 +9,11 @@
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
-    overflow-x: hidden;
-    background: url("background.png") center fixed;
+    background-image: url(background.png);
     background-size: cover;
-    background-repeat: no-repeat;
-    background-color: #cf205d00
+    background-position: center;
+    height: 100vh;
+    background-attachment: fixed;
 }
 /* Seção Principal */
 section {
