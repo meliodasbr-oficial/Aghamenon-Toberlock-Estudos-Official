@@ -138,6 +138,7 @@ margin-left: 20px;
     height: calc(46vh - 4.6875rem);
     visibility: visible;
     overflow-y: auto;
+    border-radius: 70px 0px 70px 70px;
   }
 
   .nav.active .hamburger {
