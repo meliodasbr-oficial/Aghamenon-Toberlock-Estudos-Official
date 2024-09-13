@@ -40,6 +40,8 @@ let visibilityCheckActive = false; // Controla se a verificação de abas está 
 const userAnswers = [];
 const originalAnswerIndices = [];
 
+const MAX_QUESTIONS = 10; // Limite de perguntas
+
 // Lista de questões
 const questions = [
     {
@@ -509,15 +511,19 @@ function startSimulado() {
     userAnswers.length = 0;
     originalAnswerIndices.length = 0;
     questionsAnsweredElement.textContent = "0";
-    totalQuestionsElement.textContent = questions.length.toString();
+    
+    // Limita o número de perguntas a MAX_QUESTIONS
+    const limitedQuestions = questions.slice(0, MAX_QUESTIONS);
+    totalQuestionsElement.textContent = limitedQuestions.length.toString();
 
-    shuffleArray(questions);
-    showQuestion();
+    shuffleArray(limitedQuestions);
+    showQuestion(limitedQuestions);
     restartTimer();
 
     // Ativa a verificação de visibilidade da aba
     visibilityCheckActive = true;
 }
+
 
 // Função para reiniciar o temporizador de 2 minutos
 function restartTimer() {
@@ -547,8 +553,14 @@ function startTimer() {
 }
 
 // Função para exibir uma pergunta
-function showQuestion() {
-    const currentQuestion = questions[currentQuestionIndex];
+function showQuestion(limitedQuestions) {
+    if (currentQuestionIndex >= limitedQuestions.length) {
+        clearInterval(timer);
+        showResults();
+        return;
+    }
+    
+    const currentQuestion = limitedQuestions[currentQuestionIndex];
     const correctAnswerIndex = currentQuestion.correctAnswer;
 
     const shuffledAnswers = [...currentQuestion.answers];
@@ -577,6 +589,7 @@ function showQuestion() {
     nextButton.classList.add('hidden');
     restartTimer();
 }
+
 
 // Função para selecionar uma resposta
 function selectAnswer(button, originalIndex) {
@@ -616,14 +629,15 @@ function enableAnswerButtons() {
 // Função para passar para a próxima pergunta
 nextButton.addEventListener('click', () => {
     currentQuestionIndex++;
-    if (currentQuestionIndex < questions.length) {
+    if (currentQuestionIndex < MAX_QUESTIONS) {
         resetQuestion();
-        showQuestion();
+        showQuestion(limitedQuestions);
     } else {
         clearInterval(timer);
         showResults();
     }
 });
+
 
 // Função para limpar a seleção e outros resíduos
 function resetQuestion() {
