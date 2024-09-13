@@ -1,3 +1,4 @@
+//save primario
 import { auth } from './firebaseConfig.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
 import { getFirestore, doc, getDoc, setDoc, updateDoc } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js';
@@ -39,8 +40,6 @@ let simulationId = ''; // Identificador único do simulado
 let visibilityCheckActive = false; // Controla se a verificação de abas está ativa
 const userAnswers = [];
 const originalAnswerIndices = [];
-
-const MAX_QUESTIONS = 10; // Limite de perguntas
 
 // Lista de questões
 const questions = [
@@ -511,19 +510,15 @@ function startSimulado() {
     userAnswers.length = 0;
     originalAnswerIndices.length = 0;
     questionsAnsweredElement.textContent = "0";
-    
-    // Limita o número de perguntas a MAX_QUESTIONS
-    const limitedQuestions = questions.slice(0, MAX_QUESTIONS);
-    totalQuestionsElement.textContent = limitedQuestions.length.toString();
+    totalQuestionsElement.textContent = questions.length.toString();
 
-    shuffleArray(limitedQuestions);
-    showQuestion(limitedQuestions);
+    shuffleArray(questions);
+    showQuestion();
     restartTimer();
 
     // Ativa a verificação de visibilidade da aba
     visibilityCheckActive = true;
 }
-
 
 // Função para reiniciar o temporizador de 2 minutos
 function restartTimer() {
@@ -553,14 +548,8 @@ function startTimer() {
 }
 
 // Função para exibir uma pergunta
-function showQuestion(limitedQuestions) {
-    if (currentQuestionIndex >= limitedQuestions.length) {
-        clearInterval(timer);
-        showResults();
-        return;
-    }
-    
-    const currentQuestion = limitedQuestions[currentQuestionIndex];
+function showQuestion() {
+    const currentQuestion = questions[currentQuestionIndex];
     const correctAnswerIndex = currentQuestion.correctAnswer;
 
     const shuffledAnswers = [...currentQuestion.answers];
@@ -589,7 +578,6 @@ function showQuestion(limitedQuestions) {
     nextButton.classList.add('hidden');
     restartTimer();
 }
-
 
 // Função para selecionar uma resposta
 function selectAnswer(button, originalIndex) {
@@ -629,15 +617,14 @@ function enableAnswerButtons() {
 // Função para passar para a próxima pergunta
 nextButton.addEventListener('click', () => {
     currentQuestionIndex++;
-    if (currentQuestionIndex < MAX_QUESTIONS) {
+    if (currentQuestionIndex < questions.length) {
         resetQuestion();
-        showQuestion(limitedQuestions);
+        showQuestion();
     } else {
         clearInterval(timer);
         showResults();
     }
 });
-
 
 // Função para limpar a seleção e outros resíduos
 function resetQuestion() {
