@@ -2,6 +2,7 @@ import { auth } from './firebaseConfig.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
 import { getFirestore, doc, getDoc, setDoc, updateDoc } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js';
 
+// Referências aos elementos da página
 const welcomeContainer = document.getElementById('welcome-container');
 const loginAlert = document.getElementById('login-alert');
 const startButton = document.getElementById('start-button');
@@ -23,9 +24,11 @@ const timeoutResult = document.getElementById('timeout-result');
 const retryButton = document.getElementById('retry-button');
 const inactiveTabAlert = document.getElementById('inactive-tab-alert');
 const backToSimuladoButton = document.getElementById('back-to-simulado-button');
+const accuracyElement = document.getElementById('accuracy-rate');
 
 const db = getFirestore();
 
+let currentErrors = 0;
 let currentQuestionIndex = 0;
 let score = 0;
 let correctAnswers = 0;
@@ -34,6 +37,7 @@ let penaltyApplied = false;
 let timer;
 let simulationId = ''; // Identificador único do simulado
 let visibilityCheckActive = false; // Controla se a verificação de abas está ativa
+let limitedQuestions = [];
 const userAnswers = [];
 const originalAnswerIndices = [];
 
@@ -87,6 +91,7 @@ const questions = [
     // Adicione mais questões conforme necessário
 ];
 
+// Função para embaralhar um array
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -94,20 +99,23 @@ function shuffleArray(array) {
     }
 }
 
+// Função para exibir o aviso de login
 function showLoginAlert() {
     welcomeContainer.classList.add('hidden');
     loginAlert.classList.remove('hidden');
     startButton.classList.add('hidden');
 }
 
+// Função para exibir o botão de início do simulado
 function showStartButton() {
     welcomeContainer.classList.remove('hidden');
     loginAlert.classList.add('hidden');
     startButton.classList.remove('hidden');
 }
 
+// Função para iniciar o simulado
 function startSimulado() {
-    simulationId = Date.now().toString();
+    simulationId = Date.now().toString(); // Gerar um ID único com base no timestamp atual
     welcomeContainer.classList.add('hidden');
     questionContainer.classList.remove('hidden');
     resultContainer.classList.add('hidden');
@@ -118,25 +126,19 @@ function startSimulado() {
     correctAnswers = 0;
     userAnswers.length = 0;
     originalAnswerIndices.length = 0;
-    questionsAnsweredElement.textContent = "0";
-    
-    // Atualiza o total de perguntas no elemento total-questions
-    totalQuestionsElement.textContent = questions.length.toString();
-    
-    // Atualiza o total de perguntas no elemento total-questions-span
-    const totalQuestionsSpan = document.getElementById('total-questions-span');
-    if (totalQuestionsSpan) {
-        totalQuestionsSpan.textContent = questions.length.toString();
-    }
-
+    // Limita o número de perguntas a 30, caso existam mais que isso
     shuffleArray(questions);
+    limitedQuestions = questions.slice(0, 5); // Seleciona até 30 perguntas
+    totalQuestionsElement.textContent = limitedQuestions.length.toString();
+
     showQuestion();
     restartTimer();
 
+    // Ativa a verificação de visibilidade da aba
     visibilityCheckActive = true;
 }
 
-
+// Função para reiniciar o temporizador de 2 minutos
 function restartTimer() {
     if (timer) {
         clearInterval(timer);
@@ -144,9 +146,10 @@ function restartTimer() {
     startTimer();
 }
 
+// Função para iniciar o temporizador de 2 minutos
 function startTimer() {
     penaltyApplied = false;
-    const timeLimit = 2 * 60 * 1000;
+    const timeLimit = 2 * 60 * 1000; // 2 minutos em milissegundos
     const endTime = Date.now() + timeLimit;
 
     timer = setInterval(() => {
@@ -164,7 +167,7 @@ function startTimer() {
 
 // Função para exibir uma pergunta
 function showQuestion() {
-    const currentQuestion = questions[currentQuestionIndex];
+    const currentQuestion = limitedQuestions[currentQuestionIndex]; // Usa limitedQuestions em vez de questions
     const correctAnswerIndex = currentQuestion.correctAnswer;
 
     const shuffledAnswers = [...currentQuestion.answers];
@@ -194,6 +197,7 @@ function showQuestion() {
     restartTimer();
 }
 
+// Função para selecionar uma resposta
 function selectAnswer(button, originalIndex) {
     const selectedButton = answersContainer.querySelector('.selected');
     if (selectedButton) {
@@ -216,33 +220,38 @@ function selectAnswer(button, originalIndex) {
     nextButton.classList.remove('hidden');
 }
 
+// Função para desabilitar os botões de resposta
 function disableAnswerButtons() {
     const buttons = answersContainer.querySelectorAll('.answer-button');
     buttons.forEach(button => button.disabled = true);
 }
 
+// Função para habilitar os botões de resposta
 function enableAnswerButtons() {
     const buttons = answersContainer.querySelectorAll('.answer-button');
     buttons.forEach(button => button.disabled = false);
 }
 
+// Certifique-se de passar o array limitado ao avançar as perguntas
 nextButton.addEventListener('click', () => {
     currentQuestionIndex++;
-    if (currentQuestionIndex < questions.length) {
+    if (currentQuestionIndex < limitedQuestions.length) {
         resetQuestion();
-        showQuestion();
+        showQuestion(); // Agora usará limitedQuestions automaticamente
     } else {
         clearInterval(timer);
         showResults();
     }
 });
 
+// Função para limpar a seleção e outros resíduos
 function resetQuestion() {
     answersContainer.innerHTML = '';
     enableAnswerButtons();
     nextButton.classList.add('hidden');
 }
 
+// Função para aplicar penalidade e atualizar o scoreenem no Firestore
 function applyPenalty(message) {
     if (!penaltyApplied) {
         penaltyApplied = true;
@@ -286,26 +295,38 @@ function applyPenalty(message) {
     }
 }
 
+// Função para exibir a tela de resultados de tempo esgotado
 function showTimeoutResult() {
     questionContainer.classList.add('hidden');
     resultContainer.classList.add('hidden');
     timeoutResult.classList.remove('hidden');
-    inactiveTabAlert.classList.add('hidden');
+    inactiveTabAlert.classList.add('hidden'); // Garante que o alerta de aba inativa está oculto
     timeElement.textContent = '0';
     reviewAnswersContainer.innerHTML = '';
 }
 
+// Função para exibir os resultados e atualizar a pontuação no Firestore
 function showResults() {
     questionContainer.classList.add('hidden');
     resultContainer.classList.remove('hidden');
     timeoutResult.classList.add('hidden');
     scoreElement.textContent = score.toFixed(2);
     correctAnswersElement.textContent = correctAnswers.toString();
-    totalQuestionsElement.textContent = questions.length.toString();
+    totalQuestionsElement.textContent = limitedQuestions.length.toString(); // Usa o número de perguntas limitadas
+
+    // Exibe o número de respostas corretas e o total de perguntas no formato desejado
+    const totalQuestions = limitedQuestions.length;
+    const correctAnswersText = `${correctAnswers} respostas corretas de ${totalQuestions}`;
+    correctAnswersElement.textContent = correctAnswersText;
+    
+    // Calcular e exibir a precisão de acerto
+    const accuracyRate = (correctAnswers / totalQuestions) * 100;
+    accuracyElement.textContent = `Precisão: ${accuracyRate.toFixed(2)}%`;
 
     reviewAnswersContainer.innerHTML = '';
 
-    questions.forEach((question, index) => {
+    // Usa limitedQuestions para exibir apenas as perguntas que foram exibidas no simulado
+    limitedQuestions.forEach((question, index) => {
         const questionDiv = document.createElement('div');
         questionDiv.classList.add('result-detail');
 
@@ -319,7 +340,7 @@ function showResults() {
 
         const isCorrect = userAnswers[index] === question.answers[question.correctAnswer];
         const resultText = document.createElement('p');
-        resultText.innerHTML = `<strong>Resposta: </strong>${isCorrect ? 'Correta' : 'Errado'}`;
+        resultText.innerHTML = `<strong>Resposta: </strong>${isCorrect ? 'Correta' : 'Errada'}`;
         questionDiv.appendChild(resultText);
 
         const correctAnswerText = document.createElement('p');
@@ -330,6 +351,11 @@ function showResults() {
         questionDiv.appendChild(separator);
 
         reviewAnswersContainer.appendChild(questionDiv);
+        
+        // Atualiza o contador de erros
+        if (!isCorrect) {
+            currentErrors += 1;
+        }
     });
 
     if (user) {
@@ -338,24 +364,55 @@ function showResults() {
 
         getDoc(userRef).then((docSnapshot) => {
             if (docSnapshot.exists()) {
-                const currentScoreEnem = docSnapshot.data().scoreenem || 0;
-                const newScoreEnem = Math.max(currentScoreEnem + score, 0);
+                const userData = docSnapshot.data();
+                const currentScoreEnem = userData.scoreenem || 0;
+                const totalSimulated = userData.totalSimulated || 0;
+                const totalCorrectAnswers = userData.totalCorrectAnswers || 0;
+                const totalErrors = userData.totalErrors || 0;
 
-                updateDoc(userRef, { scoreenem: newScoreEnem })
-                    .then(() => {
-                        console.log('scoreenem atualizado com sucesso!');
-                    })
-                    .catch((error) => {
-                        console.error('Erro ao atualizar o scoreenem: ', error);
-                    });
+                // Atualiza o scoreenem do usuário
+                const newScoreEnem = Math.max(currentScoreEnem + score, 0);
+                const newTotalSimulated = totalSimulated + 1;
+                const newTotalCorrectAnswers = totalCorrectAnswers + correctAnswers;
+                const newTotalErrors = totalErrors + currentErrors; // Soma os erros do simulado atual
+
+                // Calcular a precisão média com precisão de até 2 casas decimais
+                const totalAnswers = newTotalCorrectAnswers + newTotalErrors;
+                const averageAccuracy = (newTotalCorrectAnswers / totalAnswers) * 100;
+                
+                // Evitar 100% exato se possível
+                const finalAverageAccuracy = Math.min(99.99, averageAccuracy);
+
+                // Atualiza Firestore com novos valores
+                updateDoc(userRef, { 
+                    scoreenem: newScoreEnem,
+                    totalSimulated: newTotalSimulated,
+                    totalCorrectAnswers: newTotalCorrectAnswers,
+                    totalErrors: newTotalErrors,
+                    averageAccuracy: finalAverageAccuracy.toFixed(2)
+                })
+                .then(() => {
+                    console.log('scoreenem e estatísticas do usuário atualizados com sucesso!');
+                })
+                .catch((error) => {
+                    console.error('Erro ao atualizar o scoreenem e estatísticas do usuário: ', error);
+                });
+
             } else {
-                setDoc(userRef, { scoreenem: Math.max(score, 0) })
-                    .then(() => {
-                        console.log('scoreenem criado com sucesso!');
-                    })
-                    .catch((error) => {
-                        console.error('Erro ao criar o scoreenem: ', error);
-                    });
+                // Cria o documento do usuário se não existir
+                setDoc(userRef, {
+                    scoreenem: Math.max(score, 0),
+                    totalSimulated: 1,
+                    totalCorrectAnswers: correctAnswers,
+                    totalErrors: currentErrors, // Usa currentErrors para o primeiro simulado
+                    averageAccuracy: (correctAnswers / (correctAnswers + currentErrors) * 100).toFixed(2)
+                })
+                .then(() => {
+                    console.log('Documento do usuário criado com sucesso!');
+                })
+                .catch((error) => {
+                    console.error('Erro ao criar documento do usuário: ', error);
+                });
             }
         }).catch((error) => {
             console.error('Erro ao buscar documento do usuário: ', error);
@@ -364,9 +421,9 @@ function showResults() {
         // Salvar os resultados do simulado no Firestore
         setDoc(simulationRef, {
             userId: user.uid,
-            score,
-            correctAnswers,
-            totalQuestions: questions.length,
+            score: score,
+            correctAnswers: correctAnswers,
+            totalQuestions: limitedQuestions.length, // Usa o número de perguntas limitadas
             answers: userAnswers
         }).then(() => {
             console.log('Resultados do simulado salvos com sucesso!');
@@ -377,7 +434,7 @@ function showResults() {
 
     // Desativa a verificação de visibilidade da aba
     visibilityCheckActive = false;
-}
+}   
 
 // Função para reiniciar o simulado
 function restartSimulado() {

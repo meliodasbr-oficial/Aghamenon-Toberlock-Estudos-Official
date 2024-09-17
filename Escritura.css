@@ -1,18 +1,14 @@
 main {
     background: #1d1d2e;
-    border-radius: 10px;
+    border-radius: 40px;
     color: white;
     font-size: large;
     padding: 20px;
-}
-
-@media (max-width: 900px) {
-    main {
-        width: 100%;
-    }
+    margin: 20px;
+    animation: rgbBorder 20s infinite;
 }
 video {
-    margin-top: 20px;
+    margin: 15px 0px 40px;
     max-width: 100%;
     height: auto;
     display: block;
@@ -21,7 +17,17 @@ video {
 }
 
 .text-intro {
-    margin-top: 25px; /* Ajuste o valor conforme necessário */
+    text-align: justify;
+}
+p {
+    text-align: justify;
+}
+p1 {
+    color: white;
+}
+
+h3{
+    margin: 12px 0px;
 }
 
 /* Animação das bordas */

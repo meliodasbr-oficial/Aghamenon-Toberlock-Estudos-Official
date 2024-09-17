@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <script type="module" src="firebaseConfig.js" defer></script>
     <script type="module" src="SimuladoRankeado.js" defer></script>
-
+    <script src="console-protection.js" defer></script>
     <script type="module" src="firebase-auth.js"></script>
     <script type="module" src="auth.js"></script>
     <script src="menu.js" defer></script>
@@ -68,7 +68,8 @@
             <h2>Resultado do Simulado</h2>
             <p>Sua Pontuação: <span id="score">0</span></p>
             <!--<p>Pontos Perdidos: <span id="lost-points">0</span></p>-->           
-            <p><span id="correct-answers">0</span> respostas corretas de <span id="total-questions">0</span></p>
+            <p><span id="correct-answers"></span><span id="total-questions"></span></p>
+            <p id="accuracy-rate">Precisão de Acerto: 0%</p>
             <div id="review-answers" class="review-answers">
                 <!-- Respostas revisadas aparecem aqui -->
             </div>

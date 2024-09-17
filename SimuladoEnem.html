@@ -46,7 +46,7 @@
     </header>
     <main>
         <section id="welcome-container" class="container">
-            <h1>Bem-vindo ao Simulado Rankeado ENEM!</h1>
+            <h1>Bem-vindo ao Simulado Rankeado</h1>
             <p>Teste seu conhecimento e se prepare para as Provas!</p>
             <button id="start-button" class="btn">Começar Simulado</button>
         </section>
@@ -56,7 +56,7 @@
         </section>
         <section id="question-container" class="container hidden">
             <div id="timer">Tempo restante: <span id="time">120</span> segundos</div>
-            <p id="question-progress">Perguntas Respondidas: <span id="questions-answered">0</span> de <span id="total-questions-span">0</span></p>
+            <p id="question-progress">Perguntas Respondidas: <span id="questions-answered">0</span> de <span id="total-questions">0</span></p>
             <img id="question-image" src="" alt="" class="hidden">
             <h2 id="question">Pergunta</h2>
             <div id="answers" class="answers">
@@ -67,7 +67,9 @@
         <section id="result-container" class="container hidden">
             <h2>Resultado do Simulado</h2>
             <p>Sua Pontuação: <span id="score">0</span></p>
-            <p><span id="correct-answers">0</span> respostas corretas de <span id="total-questions">0</span></p>
+            <!--<p>Pontos Perdidos: <span id="lost-points">0</span></p>-->           
+            <p><span id="correct-answers"></span><span id="total-questions"></span></p>
+            <p id="accuracy-rate">Precisão de Acerto: 0%</p>
             <div id="review-answers" class="review-answers">
                 <!-- Respostas revisadas aparecem aqui -->
             </div>

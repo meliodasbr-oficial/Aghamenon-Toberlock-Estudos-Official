@@ -70,6 +70,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const profileScoreGlobal = document.getElementById('score-global');
             const profileScoreEnem = document.getElementById('score-enem');
             const profileScoreObmep = document.getElementById('score-obmep');
+            const profileAverageAccuracy = document.getElementById('average-accuracy');
+            const profileTotalCorrectAnswers = document.getElementById('total-correct-answers');
+            const profileTotalErrors = document.getElementById('total-errors');
+            const profileTotalSimulated = document.getElementById('total-simulated');
 
             if (profilePhoto) document.getElementById('logout-menu-item').style.display = 'block';
             
@@ -85,9 +89,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (profileGametag) profileGametag.textContent = gameTag;
                     if (profileBioText) profileBioText.textContent = userData.bio || 'Escreva em sua Bio, conte o que você gosta!';
 
+                    // Atualizando as novas métricas
                     if (profileScoreGlobal) profileScoreGlobal.textContent = ` ${userData.scoreglobal || '--'} Pontos`;
                     if (profileScoreEnem) profileScoreEnem.textContent = ` ${userData.scoreenem || '--'} Pontos`;
                     if (profileScoreObmep) profileScoreObmep.textContent = ` ${userData.scoreobmep || '--'} Pontos`;
+
+                    // Atualizando as métricas adicionais
+                    if (profileAverageAccuracy) {
+                        const averageAccuracy = parseFloat(userData.averageAccuracy);
+                        profileAverageAccuracy.textContent = ` ${isNaN(averageAccuracy) ? '--' : averageAccuracy.toFixed(2) + '%'} `;
+                    }
+                    if (profileTotalCorrectAnswers) profileTotalCorrectAnswers.textContent = ` ${userData.totalCorrectAnswers || '--'} `;
+                    if (profileTotalErrors) profileTotalErrors.textContent = ` ${userData.totalErrors || '--'} `;
+                    if (profileTotalSimulated) profileTotalSimulated.textContent = ` ${userData.totalSimulated || '--'} `;
 
                     if (!userData.gameTag) {
                         updateUserProfile(user, { gameTag })
@@ -103,7 +117,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         bio: 'Escreva em sua Bio, conte o que você gosta!',
                         scoreglobal: '--',
                         scoreenem: '--',
-                        scoreobmep: '--'
+                        scoreobmep: '--',
+                        averageAccuracy: '--',
+                        totalCorrectAnswers: '--',
+                        totalErrors: '--',
+                        totalSimulated: '--'
                     };
                     updateUserProfile(user, defaultData);
                     if (profileGametag) profileGametag.textContent = defaultGameTag;
@@ -111,6 +129,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (profileScoreGlobal) profileScoreGlobal.textContent = ` ${defaultData.scoreglobal} Pontos`;
                     if (profileScoreEnem) profileScoreEnem.textContent = ` ${defaultData.scoreenem} Pontos`;
                     if (profileScoreObmep) profileScoreObmep.textContent = ` ${defaultData.scoreobmep} Pontos`;
+                    if (profileAverageAccuracy) profileAverageAccuracy.textContent = ` ${defaultData.averageAccuracy} `;
+                    if (profileTotalCorrectAnswers) profileTotalCorrectAnswers.textContent = ` ${defaultData.totalCorrectAnswers} `;
+                    if (profileTotalErrors) profileTotalErrors.textContent = ` ${defaultData.totalErrors} `;
+                    if (profileTotalSimulated) profileTotalSimulated.textContent = ` ${defaultData.totalSimulated} `;
                 }
             }).catch((error) => console.error('Erro ao recuperar dados do usuário do Firestore:', error));
 

@@ -24,11 +24,14 @@ const timeoutResult = document.getElementById('timeout-result');
 const retryButton = document.getElementById('retry-button');
 const inactiveTabAlert = document.getElementById('inactive-tab-alert');
 const backToSimuladoButton = document.getElementById('back-to-simulado-button');
+const accuracyElement = document.getElementById('accuracy-rate');
 
 // Firestore initialization
 const db = getFirestore();
 
 // Variáveis para o controle do simulado
+let currentErrors = 0;
+let limitedQuestions = [];
 let currentQuestionIndex = 0;
 let score = 0;
 let correctAnswers = 0;
@@ -90,10 +93,11 @@ function startSimulado() {
     correctAnswers = 0;
     userAnswers.length = 0;
     originalAnswerIndices.length = 0;
-    questionsAnsweredElement.textContent = "0";
-    totalQuestionsElement.textContent = questions.length.toString();
-
+    // Limita o número de perguntas a 30, caso existam mais que isso
     shuffleArray(questions);
+    limitedQuestions = questions.slice(0, 5); // Seleciona até 30 perguntas
+    totalQuestionsElement.textContent = limitedQuestions.length.toString();
+
     showQuestion();
     restartTimer();
 
@@ -130,7 +134,7 @@ function startTimer() {
 
 // Função para exibir uma pergunta
 function showQuestion() {
-    const currentQuestion = questions[currentQuestionIndex];
+    const currentQuestion = limitedQuestions[currentQuestionIndex]; // Usa limitedQuestions em vez de questions
     const correctAnswerIndex = currentQuestion.correctAnswer;
 
     const shuffledAnswers = [...currentQuestion.answers];
@@ -146,7 +150,7 @@ function showQuestion() {
 
     originalAnswerIndices[currentQuestionIndex] = currentQuestion.correctAnswer;
 
-    const answerLabels = ['A', 'B', 'C', 'D'];
+    const answerLabels = ['A', 'B', 'C', 'D', 'E'];
 
     answerMap.forEach((answerObj, idx) => {
         const button = document.createElement('button');
@@ -195,12 +199,12 @@ function enableAnswerButtons() {
     buttons.forEach(button => button.disabled = false);
 }
 
-// Função para passar para a próxima pergunta
+// Certifique-se de passar o array limitado ao avançar as perguntas
 nextButton.addEventListener('click', () => {
     currentQuestionIndex++;
-    if (currentQuestionIndex < questions.length) {
+    if (currentQuestionIndex < limitedQuestions.length) {
         resetQuestion();
-        showQuestion();
+        showQuestion(); // Agora usará limitedQuestions automaticamente
     } else {
         clearInterval(timer);
         showResults();
@@ -228,10 +232,10 @@ function applyPenalty(message) {
 
             getDoc(userRef).then((docSnapshot) => {
                 if (docSnapshot.exists()) {
-                    const currentScoreObmep = docSnapshot.data().scoreobmep || 0;
-                    const newScoreObmep = Math.max(currentScoreObmep - 10, 0);
+                    const currentScoreOBMEP = docSnapshot.data().scoreobmep || 0;
+                    const newScoreOBMEP = Math.max(currentScoreOBMEP - 10, 0);
 
-                    updateDoc(userRef, { scoreobmep: newScoreObmep })
+                    updateDoc(userRef, { scoreobmep: newScoreOBMEP })
                         .then(() => {
                             console.log('scoreobmep atualizado com sucesso!');
                             showTimeoutResult();
@@ -275,11 +279,18 @@ function showResults() {
     timeoutResult.classList.add('hidden');
     scoreElement.textContent = score.toFixed(2);
     correctAnswersElement.textContent = correctAnswers.toString();
-    totalQuestionsElement.textContent = questions.length.toString();
+    totalQuestionsElement.textContent = limitedQuestions.length.toString(); // Usa o número de perguntas limitadas
+
+    const totalQuestions = limitedQuestions.length;
+    const correctAnswersText = `${correctAnswers} respostas corretas de ${totalQuestions}`;
+    correctAnswersElement.textContent = correctAnswersText;
+
+    const accuracyRate = (correctAnswers / totalQuestions) * 100;
+    accuracyElement.textContent = `Precisão: ${accuracyRate.toFixed(2)}%`;
 
     reviewAnswersContainer.innerHTML = '';
 
-    questions.forEach((question, index) => {
+    limitedQuestions.forEach((question, index) => {
         const questionDiv = document.createElement('div');
         questionDiv.classList.add('result-detail');
 
@@ -293,7 +304,7 @@ function showResults() {
 
         const isCorrect = userAnswers[index] === question.answers[question.correctAnswer];
         const resultText = document.createElement('p');
-        resultText.innerHTML = `<strong>Resposta: </strong>${isCorrect ? 'Correta' : 'Errado'}`;
+        resultText.innerHTML = `<strong>Resposta: </strong>${isCorrect ? 'Correta' : 'Errada'}`;
         questionDiv.appendChild(resultText);
 
         const correctAnswerText = document.createElement('p');
@@ -304,43 +315,72 @@ function showResults() {
         questionDiv.appendChild(separator);
 
         reviewAnswersContainer.appendChild(questionDiv);
+
+        if (!isCorrect) {
+            currentErrors += 1;
+        }
     });
 
     if (user) {
         const userRef = doc(db, 'users', user.uid);
-        const simulationRef = doc(db, 'simulations', simulationId); // Referência ao documento do simulado
+        const simulationRef = doc(db, 'simulations', simulationId);
 
         getDoc(userRef).then((docSnapshot) => {
             if (docSnapshot.exists()) {
-                const currentScoreObmep = docSnapshot.data().scoreobmep || 0;
-                const newScoreObmep = Math.max(currentScoreObmep + score, 0);
+                const userData = docSnapshot.data();
+                const currentScoreOBMEP = userData.scoreobmep || 0;
+                const totalSimulated = userData.totalSimulated || 0;
+                const totalCorrectAnswers = userData.totalCorrectAnswers || 0;
+                const totalErrors = userData.totalErrors || 0;
 
-                updateDoc(userRef, { scoreobmep: newScoreObmep })
-                    .then(() => {
-                        console.log('scoreobmep atualizado com sucesso!');
-                    })
-                    .catch((error) => {
-                        console.error('Erro ao atualizar o scoreobmep: ', error);
-                    });
+                const newScoreOBMEP = Math.max(currentScoreOBMEP + score, 0);
+                const newTotalSimulated = totalSimulated + 1;
+                const newTotalCorrectAnswers = totalCorrectAnswers + correctAnswers;
+                const newTotalErrors = totalErrors + currentErrors;
+
+                const totalAnswers = newTotalCorrectAnswers + newTotalErrors;
+                const averageAccuracy = (newTotalCorrectAnswers / totalAnswers) * 100;
+                
+                const finalAverageAccuracy = Math.min(99.99, averageAccuracy);
+
+                updateDoc(userRef, { 
+                    scoreobmep: newScoreOBMEP,
+                    totalSimulated: newTotalSimulated,
+                    totalCorrectAnswers: newTotalCorrectAnswers,
+                    totalErrors: newTotalErrors,
+                    averageAccuracy: finalAverageAccuracy.toFixed(2)
+                })
+                .then(() => {
+                    console.log('scoreobmep e estatísticas do usuário atualizados com sucesso!');
+                })
+                .catch((error) => {
+                    console.error('Erro ao atualizar o scoreobmep e estatísticas do usuário: ', error);
+                });
+
             } else {
-                setDoc(userRef, { scoreobmep: Math.max(score, 0) })
-                    .then(() => {
-                        console.log('scoreobmep criado com sucesso!');
-                    })
-                    .catch((error) => {
-                        console.error('Erro ao criar o scoreobmep: ', error);
-                    });
+                setDoc(userRef, {
+                    scoreobmep: Math.max(score, 0),
+                    totalSimulated: 1,
+                    totalCorrectAnswers: correctAnswers,
+                    totalErrors: currentErrors,
+                    averageAccuracy: (correctAnswers / (correctAnswers + currentErrors) * 100).toFixed(2)
+                })
+                .then(() => {
+                    console.log('Documento do usuário criado com sucesso!');
+                })
+                .catch((error) => {
+                    console.error('Erro ao criar documento do usuário: ', error);
+                });
             }
         }).catch((error) => {
             console.error('Erro ao buscar documento do usuário: ', error);
         });
 
-        // Salvar os resultados do simulado no Firestore
         setDoc(simulationRef, {
             userId: user.uid,
             score,
             correctAnswers,
-            totalQuestions: questions.length,
+            totalQuestions: limitedQuestions.length,
             answers: userAnswers
         }).then(() => {
             console.log('Resultados do simulado salvos com sucesso!');
@@ -349,7 +389,6 @@ function showResults() {
         });
     }
 
-    // Desativa a verificação de visibilidade da aba
     visibilityCheckActive = false;
 }
 

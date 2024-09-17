@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const avisosDoServidor = [
         { titulo: 'Aghamenon Toberlock Estudos', mensagem: '' },
-        { titulo: 'Em Manutenção', mensagem: 'Ranking Será Lançado dia 16/09/2024 às 07:30h (horário de Brasília).' },
+        { titulo: 'Em Manutenção', mensagem: 'Ranking Será Lançado dia 22/09/2024 às 23:59h (horário de Brasília).' },
         { titulo: 'Detalhes da Manutenção', mensagem: 'Lançamento do Ranking\nAtualização na pagina de Sobre' }
     ];
 

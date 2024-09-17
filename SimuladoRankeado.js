@@ -24,6 +24,7 @@ const timeoutResult = document.getElementById('timeout-result');
 const retryButton = document.getElementById('retry-button');
 const inactiveTabAlert = document.getElementById('inactive-tab-alert');
 const backToSimuladoButton = document.getElementById('back-to-simulado-button');
+const accuracyElement = document.getElementById('accuracy-rate');
 
 // Firestore initialization
 const db = getFirestore();
@@ -32,11 +33,13 @@ const db = getFirestore();
 let currentQuestionIndex = 0;
 let score = 0;
 let correctAnswers = 0;
+let currentErrors = 0;
 let user = null;
 let penaltyApplied = false;
 let timer;
 let simulationId = ''; // Identificador único do simulado
 let visibilityCheckActive = false; // Controla se a verificação de abas está ativa
+let limitedQuestions = [];
 const userAnswers = [];
 const originalAnswerIndices = [];
 
@@ -508,10 +511,11 @@ function startSimulado() {
     correctAnswers = 0;
     userAnswers.length = 0;
     originalAnswerIndices.length = 0;
-    questionsAnsweredElement.textContent = "0";
-    totalQuestionsElement.textContent = questions.length.toString();
-
+    // Limita o número de perguntas a 30, caso existam mais que isso
     shuffleArray(questions);
+    limitedQuestions = questions.slice(0, 5); // Seleciona até 30 perguntas
+    totalQuestionsElement.textContent = limitedQuestions.length.toString();
+
     showQuestion();
     restartTimer();
 
@@ -548,7 +552,7 @@ function startTimer() {
 
 // Função para exibir uma pergunta
 function showQuestion() {
-    const currentQuestion = questions[currentQuestionIndex];
+    const currentQuestion = limitedQuestions[currentQuestionIndex]; // Usa limitedQuestions em vez de questions
     const correctAnswerIndex = currentQuestion.correctAnswer;
 
     const shuffledAnswers = [...currentQuestion.answers];
@@ -613,12 +617,12 @@ function enableAnswerButtons() {
     buttons.forEach(button => button.disabled = false);
 }
 
-// Função para passar para a próxima pergunta
+// Certifique-se de passar o array limitado ao avançar as perguntas
 nextButton.addEventListener('click', () => {
     currentQuestionIndex++;
-    if (currentQuestionIndex < questions.length) {
+    if (currentQuestionIndex < limitedQuestions.length) {
         resetQuestion();
-        showQuestion();
+        showQuestion(); // Agora usará limitedQuestions automaticamente
     } else {
         clearInterval(timer);
         showResults();
@@ -693,11 +697,21 @@ function showResults() {
     timeoutResult.classList.add('hidden');
     scoreElement.textContent = score.toFixed(2);
     correctAnswersElement.textContent = correctAnswers.toString();
-    totalQuestionsElement.textContent = questions.length.toString();
+    totalQuestionsElement.textContent = limitedQuestions.length.toString(); // Usa o número de perguntas limitadas
+
+    // Exibe o número de respostas corretas e o total de perguntas no formato desejado
+    const totalQuestions = limitedQuestions.length;
+    const correctAnswersText = `${correctAnswers} respostas corretas de ${totalQuestions}`;
+    correctAnswersElement.textContent = correctAnswersText;
+    
+    // Calcular e exibir a precisão de acerto
+    const accuracyRate = (correctAnswers / totalQuestions) * 100;
+    accuracyElement.textContent = `Precisão: ${accuracyRate.toFixed(2)}%`;
 
     reviewAnswersContainer.innerHTML = '';
 
-    questions.forEach((question, index) => {
+    // Usa limitedQuestions para exibir apenas as perguntas que foram exibidas no simulado
+    limitedQuestions.forEach((question, index) => {
         const questionDiv = document.createElement('div');
         questionDiv.classList.add('result-detail');
 
@@ -711,7 +725,7 @@ function showResults() {
 
         const isCorrect = userAnswers[index] === question.answers[question.correctAnswer];
         const resultText = document.createElement('p');
-        resultText.innerHTML = `<strong>Resposta: </strong>${isCorrect ? 'Correta' : 'Errado'}`;
+        resultText.innerHTML = `<strong>Resposta: </strong>${isCorrect ? 'Correta' : 'Errada'}`;
         questionDiv.appendChild(resultText);
 
         const correctAnswerText = document.createElement('p');
@@ -722,6 +736,11 @@ function showResults() {
         questionDiv.appendChild(separator);
 
         reviewAnswersContainer.appendChild(questionDiv);
+        
+        // Atualiza o contador de erros
+        if (!isCorrect) {
+            currentErrors += 1;
+        }
     });
 
     if (user) {
@@ -730,24 +749,55 @@ function showResults() {
 
         getDoc(userRef).then((docSnapshot) => {
             if (docSnapshot.exists()) {
-                const currentScoreGlobal = docSnapshot.data().scoreglobal || 0;
-                const newScoreGlobal = Math.max(currentScoreGlobal + score, 0);
+                const userData = docSnapshot.data();
+                const currentScoreGlobal = userData.scoreglobal || 0;
+                const totalSimulated = userData.totalSimulated || 0;
+                const totalCorrectAnswers = userData.totalCorrectAnswers || 0;
+                const totalErrors = userData.totalErrors || 0;
 
-                updateDoc(userRef, { scoreglobal: newScoreGlobal })
-                    .then(() => {
-                        console.log('scoreglobal atualizado com sucesso!');
-                    })
-                    .catch((error) => {
-                        console.error('Erro ao atualizar o scoreglobal: ', error);
-                    });
+                // Atualiza o scoreglobal do usuário
+                const newScoreGlobal = Math.max(currentScoreGlobal + score, 0);
+                const newTotalSimulated = totalSimulated + 1;
+                const newTotalCorrectAnswers = totalCorrectAnswers + correctAnswers;
+                const newTotalErrors = totalErrors + currentErrors; // Soma os erros do simulado atual
+
+                // Calcular a precisão média com precisão de até 2 casas decimais
+                const totalAnswers = newTotalCorrectAnswers + newTotalErrors;
+                const averageAccuracy = (newTotalCorrectAnswers / totalAnswers) * 100;
+                
+                // Evitar 100% exato se possível
+                const finalAverageAccuracy = Math.min(99.99, averageAccuracy);
+
+                // Atualiza Firestore com novos valores
+                updateDoc(userRef, { 
+                    scoreglobal: newScoreGlobal,
+                    totalSimulated: newTotalSimulated,
+                    totalCorrectAnswers: newTotalCorrectAnswers,
+                    totalErrors: newTotalErrors,
+                    averageAccuracy: finalAverageAccuracy.toFixed(2)
+                })
+                .then(() => {
+                    console.log('scoreglobal e estatísticas do usuário atualizados com sucesso!');
+                })
+                .catch((error) => {
+                    console.error('Erro ao atualizar o scoreglobal e estatísticas do usuário: ', error);
+                });
+
             } else {
-                setDoc(userRef, { scoreglobal: Math.max(score, 0) })
-                    .then(() => {
-                        console.log('scoreglobal criado com sucesso!');
-                    })
-                    .catch((error) => {
-                        console.error('Erro ao criar o scoreglobal: ', error);
-                    });
+                // Cria o documento do usuário se não existir
+                setDoc(userRef, {
+                    scoreglobal: Math.max(score, 0),
+                    totalSimulated: 1,
+                    totalCorrectAnswers: correctAnswers,
+                    totalErrors: currentErrors, // Usa currentErrors para o primeiro simulado
+                    averageAccuracy: (correctAnswers / (correctAnswers + currentErrors) * 100).toFixed(2)
+                })
+                .then(() => {
+                    console.log('Documento do usuário criado com sucesso!');
+                })
+                .catch((error) => {
+                    console.error('Erro ao criar documento do usuário: ', error);
+                });
             }
         }).catch((error) => {
             console.error('Erro ao buscar documento do usuário: ', error);
@@ -758,7 +808,7 @@ function showResults() {
             userId: user.uid,
             score,
             correctAnswers,
-            totalQuestions: questions.length,
+            totalQuestions: limitedQuestions.length, // Usa o número de perguntas limitadas
             answers: userAnswers
         }).then(() => {
             console.log('Resultados do simulado salvos com sucesso!');

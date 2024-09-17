@@ -23,8 +23,6 @@
     <script src="console-protection.js" defer></script>
     <script type="module" src="firebase-auth.js"></script>
     <script type="module" src="auth.js"></script>
-<!--retirar quando sair da manutenção--><script src="script.js" defer></script>
-<!--retirar quando sair da manutenção--><link rel="stylesheet" href="Manutençao.css">
 
     <title>Perfil - Aghamenon Toberlock Estudos</title>
     <style>
@@ -98,6 +96,7 @@
                     <div class="edit-container">
                         <h2>GameTag: <span id="profile-gametag">Carregando...</span></h2>
                     </div>
+                    <hr>
                     <div class="profile-bio">
                         <div class="edit-container">
                             <p id="profile-bio-text">Carregando...</p>
@@ -109,12 +108,19 @@
                             </div>
                         </div>
                     </div>
-                     <!-- Adicionando a seção de scores -->
-    <div class="profile-scores">
-        <h3>Score Global: <span id="score-global">Carregando...</span></h3>
-        <h3>Score ENEM: <span id="score-enem">Carregando...</span></h3>
-        <h3>Score OBMEP: <span id="score-obmep">Carregando...</span></h3>
-    </div>
+                    <!-- Adicionando a seção de scores -->
+                    <div class="profile-scores">
+                        <h3>Score Global: <span id="score-global">Carregando...</span></h3>
+                        <h3>Score ENEM: <span id="score-enem">Carregando...</span></h3>
+                        <h3>Score OBMEP: <span id="score-obmep">Carregando...</span></h3>
+                    </div>
+                    <hr> <!-- Linha horizontal adicionada aqui -->
+                    <div class="profile-metrics">
+                        <h3>Média de Acertos: <span id="average-accuracy">Carregando...</span></h3>
+                        <h3>Total de Respostas Corretas: <span id="total-correct-answers">Carregando...</span></h3>
+                        <h3>Total de Erros: <span id="total-errors">Carregando...</span></h3>
+                        <h3>Total de Simulados: <span id="total-simulated">Carregando...</span></h3>
+                    </div>
                 </div>
             </div>
         </main>
