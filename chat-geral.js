@@ -25,7 +25,7 @@ const sendButton = document.getElementById('send-btn');
 const chatBox = document.getElementById('chat-box');
 
 // Profanity Filter (Simple Example)
-const bannedWords = ['puta que pariu', 'vai se fuder', 'porra', 'caralho', 'filha da puta', 'filho da puta', 'arrombado(a)', 'fudido', 'cacete', 'vai tomar no cu', 'puto', 'puta']; // Adicione os palavrões que você deseja proibir
+const bannedWords = ['puta que pariu', 'vai se fuder', 'porra', 'caralho', 'filha da puta', 'filho da puta', 'arrombado(a)', 'fudido', 'cacete', 'vai tomar no cu', 'puto', 'puta', 'cu', 'Pika', 'Pau', 'Pau Pretão', 'Pretão', 'Boiola', 'Baitola', 'Fudido']; // Adicione os palavrões que você deseja proibir
 
 // Function to check for banned words
 function hasBannedWords(message) {
@@ -123,7 +123,7 @@ onAuthStateChanged(auth, async (user) => {
         }
     } else {
         // User is not signed in
-        alert('Por favor, faça login para usar o chat.');
+        alert('Por favor, faça login para usar o chat global.');
         window.location.href = 'auth.html'; // Redirect to login page
     }
 });

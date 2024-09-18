@@ -64,7 +64,7 @@ main {
 #chat-container {
     width: 100%;
     max-width: 800px;
-    margin: 80px auto;
+    margin: 26px auto;
     display: flex;
     flex-direction: column;
     padding: 15px;
@@ -189,4 +189,18 @@ main {
 .chat-input-container {
     display: flex;
     margin-top: 10px;
+}
+
+.Bem-Vindo {
+    margin: 30px auto 0px;
+}
+
+h1 {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    padding: 20px;
+    animation: rgbBorder 20s infinite;
 }
