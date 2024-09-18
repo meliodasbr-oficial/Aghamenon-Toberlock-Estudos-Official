@@ -25,7 +25,7 @@ const sendButton = document.getElementById('send-btn');
 const chatBox = document.getElementById('chat-box');
 
 // Profanity Filter (Simple Example)
-const bannedWords = ['cu', 'Filha da Puta', 'Cacete', 'fdp', '']; // Adicione os palavrões que você deseja proibir
+const bannedWords = ['cu', 'Filha da Puta', 'Cacete', 'fdp', 'puto']; // Adicione os palavrões que você deseja proibir
 
 // Function to check for banned words
 function hasBannedWords(message) {
