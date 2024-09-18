@@ -3,7 +3,7 @@ footer {
     background-color: rgba(51, 51, 51, 0.8); /* Utiliza uma cor de fundo semi-transparente */
     padding: 2rem;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 150px;
     position: relative; /* Garante posicionamento relativo */
     z-index: 1; /* Define um z-index maior se necessário */
 }
