@@ -6,6 +6,60 @@ body {
     box-sizing: border-box;
 }
 
+/* Estilo Geral para o Main */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    background-color: white;
+    margin: 50px auto;
+    border-radius: 40px;
+}
+
+/* Estilo da Seção de Alerta de Login */
+#login-alert {
+    display: none; /* Oculta por padrão, será mostrado via JavaScript */
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Exibição do Alerta de Login */
+#login-alert.hidden {
+    display: none;
+}
+
+/* Estilo do Cabeçalho dentro do Alerta de Login */
+#login-alert h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Estilo do Botão de Redirecionamento */
+#login-redirect-button {
+    padding: 10px 20px;
+    background-color: var(--royal-blue-light);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Efeito de Hover no Botão de Redirecionamento */
+#login-redirect-button:hover {
+    background-color: #0008ff;
+}
+
 /* Container Principal do Chat */
 #chat-container {
     width: 100%;
@@ -16,6 +70,42 @@ body {
     padding: 15px;
 }
 
+/* Animação das bordas */
+@keyframes rgbBorder {
+    0% {
+        box-shadow: 0 0 12px 8px rgba(255, 0, 0, 0.75); /* Vermelho */
+    }
+    10% {
+        box-shadow: 0 0 12px 8px rgba(255, 165, 0, 0.75); /* Laranja */
+    }
+    20% {
+        box-shadow: 0 0 12px 8px rgba(255, 255, 0, 0.75); /* Amarelo */
+    }
+    30% {
+        box-shadow: 0 0 12px 8px rgba(0, 255, 0, 0.75); /* Verde */
+    }
+    40% {
+        box-shadow: 0 0 12px 8px rgba(0, 255, 255, 0.75); /* Ciano */
+    }
+    50% {
+        box-shadow: 0 0 12px 8px rgba(0, 0, 255, 0.75); /* Azul */
+    }
+    60% {
+        box-shadow: 0 0 12px 8px rgba(255, 0, 255, 0.75); /* Magenta */
+    }
+    70% {
+        box-shadow: 0 0 12px 8px rgba(128, 0, 128, 0.75); /* Roxo */
+    }
+    80% {
+        box-shadow: 0 0 12px 8px rgba(255, 105, 180, 0.75); /* Rosa */
+    }
+    90% {
+        box-shadow: 0 0 12px 8px rgba(128, 128, 128, 0.75); /* Cinza */
+    }
+    100% {
+        box-shadow: 0 0 12px 8px rgba(255, 0, 0, 0.75); /* Vermelho */
+    }
+}
 
 /* Caixa de Mensagens */
 #chat-box {
@@ -25,31 +115,45 @@ body {
     padding: 10px;
     background-color: #f9f9f9;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espaçamento entre mensagens */
+    animation: rgbBorder 20s infinite;
 }
 
 /* Mensagem Individual */
 .message {
-    background-color: #f1f1f1;
     padding: 8px 10px;
     border-radius: 5px;
-    margin-bottom: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    max-width: 70%; /* Limita a largura das mensagens */
+    word-wrap: break-word; /* Quebra as palavras longas */
 }
 
-/* Separador de Data */
-.date-separator {
-    text-align: center;
-    margin: 12px 0;
+/* Estilo de Mensagem do Usuário */
+.right {
+    align-self: flex-end; /* Alinha mensagens do usuário à direita */
+    background-color: #d1ffd1;
+    margin-left: auto; /* Garante o alinhamento à direita */
+}
+
+/* Estilo de Mensagem de Outros Usuários */
+.left {
+    align-self: flex-start; /* Alinha mensagens de outros usuários à esquerda */
+    background-color: #f1f1f1;
+    text-align: left;
+    margin-right: auto; /* Garante o alinhamento à esquerda */
+}
+
+/* Prefixo */
+.prefix {
     font-weight: bold;
-    color: #333;
 }
 
 /* Estilo de Hora da Mensagem */
 .time {
-    font-size: 0.75em;
-    color: #777;
+    display: block;
+    font-size: 0.8em;
+    color: gray;
 }
 
 /* Campo de Entrada da Mensagem */
@@ -61,22 +165,24 @@ body {
     margin-right: 8px;
     outline: none;
     font-size: 1em;
+    animation: rgbBorder 20s infinite;
 }
 
 /* Botão de Enviar */
 #send-btn {
     padding: 8px 16px;
-    background-color: #4CAF50;
+    background-color: #4245dc;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    animation: rgbBorder 20s infinite;
 }
 
 /* Efeito de Hover no Botão */
 #send-btn:hover {
-    background-color: #45a049;
+    background-color: #0000ff;
 }
 
 /* Container de Entrada e Botão */

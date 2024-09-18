@@ -25,11 +25,12 @@ const sendButton = document.getElementById('send-btn');
 const chatBox = document.getElementById('chat-box');
 
 // Profanity Filter (Simple Example)
-const bannedWords = ['cu', 'Filha da Puta', 'Cacete', 'fdp', 'puto']; // Adicione os palavrões que você deseja proibir
+const bannedWords = ['puta que pariu', 'vai se fuder', 'porra', 'caralho', 'filha da puta', 'filho da puta', 'arrombado(a)', 'fudido', 'cacete', 'vai tomar no cu', 'puto', 'puta']; // Adicione os palavrões que você deseja proibir
 
 // Function to check for banned words
 function hasBannedWords(message) {
-    return bannedWords.some(word => message.toLowerCase().includes(word));
+    const lowerCaseMessage = message.toLowerCase();
+    return bannedWords.some(word => lowerCaseMessage.includes(word));
 }
 
 // Function to get user GameTag
@@ -79,7 +80,7 @@ async function sendMessage(user) {
 }
 
 // Listen for new messages
-function loadMessages() {
+function loadMessages(user) {
     const q = query(collection(db, 'messages'), orderBy('timestamp', 'asc'));
     onSnapshot(q, (snapshot) => {
         chatBox.innerHTML = ''; // Clear the chat box
@@ -87,8 +88,13 @@ function loadMessages() {
             const data = doc.data();
             const messageElement = document.createElement('div');
             messageElement.classList.add('message');
+            // Determine the prefix and alignment
+            const isUserMessage = data.sender === user.gameTag;
+            const prefix = isUserMessage ? 'Você:' : data.sender; // Show only GameTag for other users
+            const alignmentClass = isUserMessage ? 'right' : 'left';
+            messageElement.classList.add(alignmentClass);
             messageElement.innerHTML = `
-                <span>${data.sender}: ${data.message}</span>
+                <span class="prefix">${prefix}</span> ${data.message}
                 <span class="time">${new Date(data.timestamp?.toDate()).toLocaleTimeString('pt-BR')}</span>
             `;
             chatBox.appendChild(messageElement);
@@ -98,20 +104,23 @@ function loadMessages() {
 }
 
 // Auth state listener
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, async (user) => {
     if (user) {
         // User is signed in
-        loadMessages();
+        const gameTag = await getUserGameTag(user.uid);
+        if (gameTag) {
+            loadMessages({ uid: user.uid, gameTag }); // Pass the user GameTag to loadMessages
 
-        // Send message on button click
-        sendButton.addEventListener('click', () => sendMessage(user));
+            // Send message on button click
+            sendButton.addEventListener('click', () => sendMessage(user));
 
-        // Send message on Enter key press
-        messageInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                sendMessage(user);
-            }
-        });
+            // Send message on Enter key press
+            messageInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    sendMessage(user);
+                }
+            });
+        }
     } else {
         // User is not signed in
         alert('Por favor, faça login para usar o chat.');
