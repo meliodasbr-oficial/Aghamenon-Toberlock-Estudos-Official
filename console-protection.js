@@ -40,6 +40,13 @@
 
         // Verificar também quando a janela for redimensionada
         window.addEventListener('resize', check);
+        
+        // Verificar se as ferramentas de desenvolvedor estão abertas
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                check();
+            }
+        });
     }
 
     // Iniciar a detecção
