@@ -4,16 +4,15 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+html {
+    background-image: url(background.png);
+    background-attachment: fixed;
+}
 /* Fonte Padrão */
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
-    background-image: url(background.png);
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    background-attachment: fixed;
+
 }
 /* Seção Principal */
 section {
