@@ -5,17 +5,20 @@
     box-sizing: border-box;
 }
 html {
-    background-image: url(background.png);
-    background-attachment: fixed;
+    background: black;
 }
 /* Fonte Padrão */
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
-
+    background: black;
 }
 /* Seção Principal */
 section {
+    background-image: url(background.png);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     display: flex;
     flex-direction: column;
     justify-content: center;
