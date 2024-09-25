@@ -10,7 +10,7 @@ div.cursos {
     align-items: center;
     flex-direction: column;
     text-align: center;
-    margin: 16px;
+    margin: 2rem;
     animation: rgbBorder 20s infinite;
 }
 /* Animação das bordas */
