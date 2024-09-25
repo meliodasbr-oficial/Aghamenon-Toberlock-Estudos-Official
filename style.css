@@ -17,14 +17,17 @@ body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
-    background: url("background.png") center fixed;
-    background-size: cover;
-    background-color: #000000;
-    background-repeat: no-repeat;
+    background-color: black;
+
 }
 
 /* Seção Principal */
 section {
+background-image: url("background.png");
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+background-attachment: fixed;
 display: flex;
 flex-direction: column;
 }
