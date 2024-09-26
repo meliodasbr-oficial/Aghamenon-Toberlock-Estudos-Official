@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="aghamenonestudosiconv2.ico" type="image/x-icon" >
+    <link rel="stylesheet" href="Administração.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="guia.css" />
+    <link rel="stylesheet" href="mobilemenu.css" />
+    <link rel="stylesheet" href="Rodape.css">
+    <script src="menu.js" defer></script>
+
+    <script type="module" src="firebase-auth.js"></script>
+    <script type="module" src="auth.js"></script>
+
+    <title>Tecnologia da Informação (TI)</title>
+</head>
+<body>
+    <section>
+        <header class="menu-computer">
+            <a class="logo">Aghamenon Toberlock Estudos</a>
+            <nav class="nav">
+                <button
+                  class="btn-menu"
+                  aria-label="Abrir Menu"
+                  aria-haspopup="true"
+                  aria-controls="menu"
+                  aria-expanded="false"
+                >
+                  Menu<span class="hamburger"></span>
+                </button>
+                <ul class="menu" id="menu" role="menu">
+                    <li><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/">Início</a></li>
+                    <li><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/Servi%C3%A7os">Serviços</a></li>
+                        <li><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/Ranking">Ranking</a></li>
+                        <li><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/Simulado-Rankeado">Simulado Rankeado</a></li>
+                    <li><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/Contato">Suporte</a></li>
+                    <li id="auth-menu-item"><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/auth">Login / Registro</a></li>
+                    <li id="profile-menu-item" style="display: none;"><a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/Perfil">Perfil</a></li>
+                </ul>
+            </nav> 
+        </header>
+        <main>
+         <!-- O que é um profissional de Tecnologia da Informação -->
+    <div class="tip-category" id="organization">
+        <h3>O que é um profissional de Tecnologia da Informação (TI)?</h3>
+        <p>O profissional de Tecnologia da Informação (TI) é responsável por projetar, implementar e gerenciar sistemas de tecnologia que suportam as operações de uma empresa ou organização. Isso inclui desde redes de computadores, sistemas de banco de dados, segurança da informação, até o desenvolvimento de softwares e websites. Em um mundo cada vez mais digital, o papel desse profissional é crucial para garantir a eficiência e segurança de processos tecnológicos.</p>
+    </div>
+
+    <!-- O que se estuda em Tecnologia da Informação -->
+    <div class="tip-category" id="techniques">
+        <h3>O que se estuda em Tecnologia da Informação?</h3>
+        <p>O curso de Tecnologia da Informação (TI) envolve uma vasta gama de áreas técnicas e teóricas que capacitam o profissional a lidar com as tecnologias mais recentes. Alguns dos principais tópicos estudados incluem:</p>
+        <ul>
+            <li><b>Redes de Computadores:</b> Configuração, manutenção e segurança de redes locais e distribuídas.</li>
+            <li><b>Desenvolvimento de Software:</b> Programação e construção de sistemas e aplicativos.</li>
+            <li><b>Bancos de Dados:</b> Administração e otimização de bancos de dados para armazenar e processar informações.</li>
+            <li><b>Segurança da Informação:</b> Técnicas para proteger dados e sistemas contra ameaças cibernéticas.</li>
+            <li><b>Sistemas Operacionais:</b> Gerenciamento e configuração de sistemas como Linux, Windows e outros.</li>
+            <li><b>Computação em Nuvem:</b> Utilização e gerenciamento de serviços de nuvem para otimização de recursos e infraestrutura.</li>
+            <li><b>Inteligência Artificial e Machine Learning:</b> Desenvolvimento e implementação de algoritmos de IA para resolver problemas complexos.</li>
+        </ul>
+    </div>
+
+    <!-- Quais são as áreas de atuação de um profissional de TI -->
+    <div class="tip-category" id="time-management">
+        <h3>Quais são as áreas de atuação de um profissional de TI?</h3>
+        <p>Os profissionais de TI podem atuar em várias áreas, cada uma com suas especialidades e focos. As principais áreas de atuação incluem:</p>
+        <ul>
+            <li><b>Desenvolvimento de Software:</b> Criar e manter sistemas e aplicativos para resolver problemas específicos ou melhorar a eficiência de processos.</li>
+            <li><b>Administração de Redes:</b> Gerenciar redes corporativas, garantindo conectividade segura e eficiente entre usuários e sistemas.</li>
+            <li><b>Segurança da Informação:</b> Proteger sistemas e dados contra ataques cibernéticos, fraudes e violações de segurança.</li>
+            <li><b>Suporte Técnico:</b> Oferecer suporte para solucionar problemas técnicos e manter sistemas e equipamentos funcionando corretamente.</li>
+            <li><b>Gestão de Projetos de TI:</b> Liderar a implementação de novos sistemas e inovações tecnológicas dentro de uma organização.</li>
+            <li><b>Big Data e Análise de Dados:</b> Processar e interpretar grandes volumes de dados para gerar insights e apoiar a tomada de decisões estratégicas.</li>
+            <li><b>Computação em Nuvem:</b> Implementar e gerenciar serviços em nuvem, otimizando recursos e diminuindo custos de infraestrutura.</li>
+            <li><b>Inteligência Artificial:</b> Trabalhar com algoritmos e sistemas de IA para criar soluções automatizadas e inteligentes.</li>
+        </ul>
+    </div>
+
+    <!-- Conclusão -->
+    <div class="tip-category" id="conclusion">
+        <h3>Conclusão</h3>
+        <p>O campo da Tecnologia da Informação é dinâmico e vital para o funcionamento das empresas modernas. Com a rápida evolução tecnológica, os profissionais de TI são altamente demandados para ajudar a integrar novas soluções, proteger dados e melhorar a eficiência operacional. A carreira oferece oportunidades de crescimento e especialização em diversas áreas tecnológicas, tornando-se uma escolha promissora para o futuro.</p>
+    </div>
+
+    <!-- Onde pode estar estudando -->
+    <div class="tip-category" id="where-study">
+        <h3>Onde você pode estudar Tecnologia da Informação?</h3>
+        <p>Existem diversas instituições de ensino que oferecem cursos de Tecnologia da Informação (TI), com ênfases que variam desde programação até segurança cibernética. Alguns exemplos incluem:</p>
+        <ul>
+            <li><a href="https://www.ime.usp.br">IME-USP – Instituto de Matemática e Estatística da USP</a> (Brasil)</li>
+            <li><a href="https://www.puc-rio.br">PUC-Rio – Pontifícia Universidade Católica do Rio de Janeiro</a> (Brasil)</li>
+            <li><a href="https://www.ifsp.edu.br">IFSP – Instituto Federal de São Paulo</a> (Brasil)</li>
+            <li><a href="https://www.mit.edu">MIT – Massachusetts Institute of Technology</a> (Estados Unidos)</li>
+            <li><a href="https://www.stanford.edu">Stanford University</a> (Estados Unidos)</li>
+            <li><a href="https://www.coursera.org">Coursera – Plataforma de cursos online</a> (Global)</li>
+        </ul>
+        <p>Essas universidades e plataformas de ensino oferecem formação de qualidade para quem deseja ingressar na área de TI, com opções no Brasil e no exterior, além de cursos online.</p>
+    </div>
+
+        <div class="tip-category" id="exam-preparation">
+            <h3></h3>
+            <p>Olá! Queremos proporcionar a melhor experiência possível em nosso site. Se você tiver sugestões para torná-lo mais agradável e útil, por favor, envie-nos um e-mail para <a href="mailto:aghamenonestudos@gmail.com">Aghamenon  Toberlock  Estudos</a>. Estamos ansiosos para ouvir suas ideias e melhorar nosso site juntos! </p>
+        </div>
+        <div class="tip-category" id="fim">
+            <p></p>
+        </div>
+        </main>
+      </section>
+      <footer>
+        <div class="footer-content">
+            <div class="section links">
+                <a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/">Início</a>
+                <a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/Servi%C3%A7os">Serviços</a>
+                <a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/Simulado">Simulado</a>
+                <a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/Sobre">Sobre</a>
+                <a href="https://meliodasbr-oficial.github.io/Aghamenon-Toberlock-Estudos-Official/Contato">Suporte</a>
+                <a href="#privacidade">Política de Privacidade</a>
+                <a href="#termos">Termos de Uso</a>
+            </div>
+            <div class="section contact">
+                <p>Email: <a href="mailto:aghamenonestudos@gmail.com">aghamenonestudos@gmail.com</a></p>
+                <p>Grupo Telegram: <a href="https://t.me/+U4GrpzJNIkNjMmI5">Aghamenon Estudos</a></p>
+            </div>
+            <div class="section social">
+                <a href="https://www.instagram.com/aghamenontoberlockestudos_ofc/"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+        <p>&copy; 2024 Aghamenon Toberlock Estudos Official. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
