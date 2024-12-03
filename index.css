@@ -1,0 +1,98 @@
+/* styles.css */
+html {
+    background-color: black;
+}
+
+.manutencao {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 700px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 150px;
+    animation: rgbBorder 20s infinite;
+}
+/* Animação das bordas */
+@keyframes rgbBorder {
+    0% {
+        box-shadow: 0 0 12px 8px rgba(255, 0, 0, 0.75); /* Vermelho */
+    }
+    10% {
+        box-shadow: 0 0 12px 8px rgba(255, 165, 0, 0.75); /* Laranja */
+    }
+    20% {
+        box-shadow: 0 0 12px 8px rgba(255, 255, 0, 0.75); /* Amarelo */
+    }
+    30% {
+        box-shadow: 0 0 12px 8px rgba(0, 255, 0, 0.75); /* Verde */
+    }
+    40% {
+        box-shadow: 0 0 12px 8px rgba(0, 255, 255, 0.75); /* Ciano */
+    }
+    50% {
+        box-shadow: 0 0 12px 8px rgba(0, 0, 255, 0.75); /* Azul */
+    }
+    60% {
+        box-shadow: 0 0 12px 8px rgba(255, 0, 255, 0.75); /* Magenta */
+    }
+    70% {
+        box-shadow: 0 0 12px 8px rgba(128, 0, 128, 0.75); /* Roxo */
+    }
+    80% {
+        box-shadow: 0 0 12px 8px rgba(255, 105, 180, 0.75); /* Rosa */
+    }
+    90% {
+        box-shadow: 0 0 12px 8px rgba(128, 128, 128, 0.75); /* Cinza */
+    }
+    100% {
+        box-shadow: 0 0 12px 8px rgba(255, 0, 0, 0.75); /* Vermelho */
+    }
+}
+#avisos-manutencao {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.aviso {
+    padding: 10px;
+    background-color: #f1f1f1;
+    margin-bottom: 10px;
+    border-left: 6px solid #007BFF; /* Cor da borda do aviso */
+    border-radius: 4px;
+    word-break: break-word; /* Ajusta a quebra de palavras para evitar estouro do layout */
+    text-align: left; /* Alinha o texto à esquerda */
+}
+
+.aviso h3 {
+    margin-top: 0;
+    font-size: 18px;
+}
+
+.aviso p {
+    margin-bottom: 0;
+    font-style: italic;
+    font-size: 18px;
+    color: #333;
+    white-space: pre-wrap; /* Mantém quebras de linha e espaços */
+}
+
+@media (max-width: 768px) {
+    .manutencao {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 150px;
+    }
+}
